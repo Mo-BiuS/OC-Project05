@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.safetyNet.Alerts.Model.Sub.Medication;
-
 public class FirestationTest {
 
 	public static String adressA;
@@ -38,22 +36,22 @@ public class FirestationTest {
 	
 	
 	@Test
-	public void medicalRecordGetAdress() {
+	public void firestationGetAdress() {
 		assertEquals(adressA, firestationA.getAdress());
 	}
 	@Test
-	public void medicalRecordGetStation() {
+	public void firestationGetStation() {
 		assertEquals(stationA, firestationA.getStation());
 	}
 	
 	
 	@Test
-	public void medicalRecordSetAdress() {
+	public void firestationSetAdress() {
 		firestationA.setAdress(adressB);
 		assertEquals(adressB, firestationA.getAdress());
 	}
 	@Test
-	public void medicalRecordSetStation() {
+	public void firestationSetStation() {
 		firestationA.setStation(stationB);
 		assertEquals(stationB, firestationA.getStation());
 	}

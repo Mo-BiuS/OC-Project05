@@ -35,22 +35,22 @@ public class MedicationTest {
 	
 	
 	@Test
-	public void medicalRecordGetProductName() {
+	public void medicationGetProductName() {
 		assertEquals(productNameA, medicationA.getProductName());
 	}
 	@Test
-	public void medicalRecordGetPosologyInMg() {
+	public void medicationGetPosologyInMg() {
 		assertEquals(posologyInMgA, medicationA.getPosologyInMg());
 	}
 	
 	
 	@Test
-	public void medicalRecordSetProductName() {
+	public void medicationSetProductName() {
 		medicationA.setProductName(productNameB);
 		assertEquals(productNameB, medicationA.getProductName());
 	}
 	@Test
-	public void medicalRecordSetPosologyInMg() {
+	public void medicationSetPosologyInMg() {
 		medicationA.setPosologyInMg(posologyInMgB);
 		assertEquals(posologyInMgB, medicationA.getPosologyInMg());
 	}

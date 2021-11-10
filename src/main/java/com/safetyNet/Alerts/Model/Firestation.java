@@ -1,7 +1,5 @@
 package com.safetyNet.Alerts.Model;
 
-import com.safetyNet.Alerts.Model.Sub.Medication;
-
 public class Firestation {
 	private String adress;
 	private int station;
