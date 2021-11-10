@@ -32,7 +32,7 @@ public class Medication {
 		
 		if(o instanceof Medication) {
 			Medication test = (Medication)o;
-			return (test.getProductName() == this.getProductName() &&
+			return (test.getProductName().equals(this.getProductName()) &&
 					test.getPosologyInMg() == this.getPosologyInMg());
 		}
 		else return false;
