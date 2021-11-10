@@ -126,6 +126,10 @@ public class MedicalRecordTest {
 		assertFalse(medicalRecordTestA.equals(medicalRecordTestB));
 	}
 	@Test
+	public void equalsTestOtherObject() {
+		assertFalse(medicalRecordTestA.equals(new Object()));
+	}
+	@Test
 	public void equalsTestSameObject() {
 		assertTrue(medicalRecordTestA.equals(medicalRecordTestA));
 	}

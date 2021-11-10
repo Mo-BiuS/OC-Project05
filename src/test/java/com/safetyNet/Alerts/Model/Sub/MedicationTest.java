@@ -60,6 +60,10 @@ public class MedicationTest {
 		assertFalse(medicationA.equals(medicationB));
 	}
 	@Test
+	public void equalsTestOtherObject() {
+		assertFalse(medicationA.equals(new Object()));
+	}
+	@Test
 	public void equalsTestSameObject() {
 		assertTrue(medicationA.equals(medicationA));
 	}

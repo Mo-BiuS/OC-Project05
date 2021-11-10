@@ -137,6 +137,10 @@ public class PersonTest {
 		assertFalse(personA.equals(personB));
 	}
 	@Test
+	public void equalsTestOtherObject() {
+		assertFalse(personA.equals(new Object()));
+	}
+	@Test
 	public void equalsTestSameObject() {
 		assertTrue(personA.equals(personA));
 	}

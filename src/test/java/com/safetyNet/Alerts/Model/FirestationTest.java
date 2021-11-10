@@ -61,6 +61,10 @@ public class FirestationTest {
 		assertFalse(firestationA.equals(firestationB));
 	}
 	@Test
+	public void equalsTestOtherObject() {
+		assertFalse(firestationA.equals(new Object()));
+	}
+	@Test
 	public void equalsTestSameObject() {
 		assertTrue(firestationA.equals(firestationA));
 	}
