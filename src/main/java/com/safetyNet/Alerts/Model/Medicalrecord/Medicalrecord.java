@@ -46,6 +46,30 @@ public class Medicalrecord {
 	}
 	
 	@Override
+	public int hashCode() {
+		String firstName = this.getFirstName();
+		if(firstName == null)firstName = "";
+		
+		String lastName = this.getLastName();
+		if(lastName == null)lastName = "";
+		
+		Date birthdate = this.getBirthdate();
+		if(birthdate == null)birthdate = new Date();
+		
+		ArrayList<String> medications = this.getMedications();
+		if(medications == null)medications = new ArrayList<String>();
+		
+		ArrayList<String> allergies = this.getAllergies();
+		if(allergies == null)allergies = new ArrayList<String>();
+		
+		return firstName.hashCode()*
+				lastName.hashCode()*
+				birthdate.hashCode()*
+				medications.hashCode()*
+				allergies.hashCode();
+	}
+	
+	@Override
 	public boolean equals(Object o) {
 		if(o == this)return true;
 		

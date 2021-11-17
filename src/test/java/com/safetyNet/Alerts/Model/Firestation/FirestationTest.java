@@ -45,21 +45,22 @@ public class FirestationTest {
 	}
 	
 	@Test
-	public void equalsTestNonEquals() {
-		assertFalse(firestationA.equals(firestationB));
-	}
-	@Test
-	public void equalsTestOtherObject() {
+	public void equalsTest() {
 		assertFalse(firestationA.equals(new Object()));
-	}
-	@Test
-	public void equalsTestSameObject() {
-		assertTrue(firestationA.equals(firestationA));
-	}
-	@Test
-	public void equalsTestEquals() {
+		
 		assertFalse(firestationA.equals(firestationB));
+		assertFalse(firestationB.equals(firestationA));
+		
 		firestationB = new Firestation(adressA, stationA);
 		assertTrue(firestationA.equals(firestationA));
+		assertTrue(firestationA.equals(firestationB));
+	}
+	@Test
+	public void hashTest() {
+		assertTrue(firestationA.hashCode() != firestationB.hashCode());
+		firestationB = new Firestation(adressA, stationA);
+		assertTrue(firestationA.hashCode() == firestationB.hashCode());
+		firestationA = new Firestation(null, stationA);
+		assertTrue(firestationA.hashCode() == firestationA.hashCode());
 	}
 }

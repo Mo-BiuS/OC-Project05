@@ -13,13 +13,17 @@ public class Medicalrecords {
 		this.medicalrecords = medicalrecords;
 	}
 	
-	
 	public List<Medicalrecord> getMedicalrecords() {
 		return medicalrecords;
 	}
 	
 	@Override
 	public String toString() {
-		return this.getMedicalrecords().toString();
+		StringBuffer buf = new StringBuffer();
+		buf.append("Medicalrecords : \n");
+		for(int i = 0 ; i < this.getMedicalrecords().size(); i++)
+			buf.append(this.getMedicalrecords().get(i)+"\n");
+		
+		return buf.toString();
 	}
 }

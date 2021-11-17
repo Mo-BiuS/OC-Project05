@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.safetyNet.Alerts.Model.Person.Person;
-
 public class PersonTest {
 
 	public static String firstNameA;
@@ -97,21 +95,22 @@ public class PersonTest {
 	}
 	
 	@Test
-	public void equalsTestNonEquals() {
-		assertFalse(personA.equals(personB));
-	}
-	@Test
-	public void equalsTestOtherObject() {
+	public void equalsTest() {
 		assertFalse(personA.equals(new Object()));
-	}
-	@Test
-	public void equalsTestSameObject() {
-		assertTrue(personA.equals(personA));
-	}
-	@Test
-	public void equalsTestEquals() {
+		
 		assertFalse(personA.equals(personB));
+		assertFalse(personB.equals(personA));
+		
 		personB = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);
+		assertTrue(personA.equals(personB));
 		assertTrue(personA.equals(personA));
+	}
+	@Test
+	public void hashTest() {
+		assertTrue(personA.hashCode() != personB.hashCode());
+		personB = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);
+		assertTrue(personA.hashCode() == personB.hashCode());
+		personA = new Person(null, null, null, null, zipA, null, null);
+		assertTrue(personA.hashCode() == personA.hashCode());
 	}
 }

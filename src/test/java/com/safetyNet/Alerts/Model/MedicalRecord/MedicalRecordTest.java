@@ -90,21 +90,22 @@ public class MedicalRecordTest {
 	}
 	
 	@Test
-	public void equalsTestNonEquals() {
-		assertFalse(medicalRecordTestA.equals(medicalRecordTestB));
-	}
-	@Test
-	public void equalsTestOtherObject() {
+	public void equalsTest() {
 		assertFalse(medicalRecordTestA.equals(new Object()));
-	}
-	@Test
-	public void equalsTestSameObject() {
+		
+		assertFalse(medicalRecordTestA.equals(medicalRecordTestB));
+		assertFalse(medicalRecordTestB.equals(medicalRecordTestA));
+		
+		medicalRecordTestB = new Medicalrecord(firstNameA, lastNameA, birthdateA , medicationsA, allergiesA);
+		assertTrue(medicalRecordTestA.equals(medicalRecordTestB));
 		assertTrue(medicalRecordTestA.equals(medicalRecordTestA));
 	}
 	@Test
-	public void equalsTestEquals() {
-		assertFalse(medicalRecordTestA.equals(medicalRecordTestB));
+	public void hashTest() {
+		assertTrue(medicalRecordTestA.hashCode() != medicalRecordTestB.hashCode());
 		medicalRecordTestB = new Medicalrecord(firstNameA, lastNameA, birthdateA , medicationsA, allergiesA);
-		assertTrue(medicalRecordTestA.equals(medicalRecordTestB));
+		assertTrue(medicalRecordTestA.hashCode() == medicalRecordTestB.hashCode());
+		medicalRecordTestA = new Medicalrecord(null, null, null , null, null);
+		assertTrue(medicalRecordTestA.hashCode() == medicalRecordTestA.hashCode());
 	}
 }

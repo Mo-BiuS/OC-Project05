@@ -20,6 +20,11 @@ public class Persons {
 	
 	@Override
 	public String toString() {
-		return this.getPersons().toString();
+		StringBuffer buf = new StringBuffer();
+		buf.append("Persons : \n");
+		for(int i = 0 ; i < this.getPersons().size(); i++)
+			buf.append(this.getPersons().get(i)+"\n");
+		
+		return buf.toString();
 	}
 }

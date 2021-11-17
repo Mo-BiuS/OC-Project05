@@ -19,6 +19,11 @@ public class Firestations {
 	
 	@Override
 	public String toString() {
-		return this.getFirestations().toString();
+		StringBuffer buf = new StringBuffer();
+		buf.append("Firestations : \n");
+		for(int i = 0 ; i < this.getFirestations().size(); i++)
+			buf.append(this.getFirestations().get(i)+"\n");
+		
+		return buf.toString();
 	}
 }

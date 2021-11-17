@@ -21,6 +21,14 @@ public class Firestation {
 		return station;
 	}
 	
+	@Override
+	public int hashCode() {
+		String address = this.getAddress();
+		if(address == null) address = "";
+		
+		return address.hashCode()*
+			   getStation();
+	}
 	
 	@Override
 	public boolean equals(Object o) {
