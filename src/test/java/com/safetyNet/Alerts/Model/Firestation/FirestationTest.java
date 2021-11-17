@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model;
+package com.safetyNet.Alerts.Model.Firestation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -37,23 +37,11 @@ public class FirestationTest {
 	
 	@Test
 	public void firestationGetAdress() {
-		assertEquals(adressA, firestationA.getAdress());
+		assertEquals(adressA, firestationA.getAddress());
 	}
 	@Test
 	public void firestationGetStation() {
 		assertEquals(stationA, firestationA.getStation());
-	}
-	
-	
-	@Test
-	public void firestationSetAdress() {
-		firestationA.setAdress(adressB);
-		assertEquals(adressB, firestationA.getAdress());
-	}
-	@Test
-	public void firestationSetStation() {
-		firestationA.setStation(stationB);
-		assertEquals(stationB, firestationA.getStation());
 	}
 	
 	@Test
@@ -70,10 +58,8 @@ public class FirestationTest {
 	}
 	@Test
 	public void equalsTestEquals() {
-		firestationA.setAdress(adressB);
 		assertFalse(firestationA.equals(firestationB));
-		
-		firestationA.setStation(stationB);
+		firestationB = new Firestation(adressA, stationA);
 		assertTrue(firestationA.equals(firestationA));
 	}
 }
