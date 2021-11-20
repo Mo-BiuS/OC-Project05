@@ -62,5 +62,9 @@ public class FirestationTest {
 		assertTrue(firestationA.hashCode() == firestationB.hashCode());
 		firestationA = new Firestation(null, stationA);
 		assertTrue(firestationA.hashCode() == firestationA.hashCode());
+		
+		firestationA = new Firestation(null, stationA);
+		firestationB = new Firestation(adressB, 0);
+		assertTrue(firestationA.hashCode() != firestationB.hashCode());
 	}
 }

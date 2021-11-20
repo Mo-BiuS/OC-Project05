@@ -54,31 +54,30 @@ public class Person {
 	
 	@Override
 	public int hashCode() {
+		int value = 1;
+		
 		String firstName = this.getFirstName();
-		if(firstName == null)firstName = "";
+		if(firstName != null)value*=firstName.hashCode();
 		
 		String lastName = this.getLastName();
-		if(lastName == null)lastName = "";
+		if(lastName != null)value*=lastName.hashCode();
 		
 		String address = this.getAddress();
-		if(address == null)address = "";
+		if(address != null)value*=address.hashCode();
 		
 		String city = this.getCity();
-		if(city == null)city = "";
+		if(city != null)value*=city.hashCode();
 		
 		String phone = this.getPhone();
-		if(phone == null)phone = "";
+		if(phone != null)value*=phone.hashCode();
 		
 		String email = this.getEmail();
-		if(email == null)email = "";
+		if(email != null)value*=email.hashCode();
 		
-		return firstName.hashCode()*
-				lastName.hashCode()*
-				address.hashCode()*
-				city.hashCode()*
-				phone.hashCode()*
-				email.hashCode()*
-			   getZip();
+		int zip = this.getZip();
+		if(zip != 0)value*=zip;
+		
+		return value;
 	}
 	@Override
 	public boolean equals(Object o) {

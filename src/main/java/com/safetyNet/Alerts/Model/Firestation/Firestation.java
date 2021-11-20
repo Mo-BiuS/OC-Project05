@@ -23,11 +23,15 @@ public class Firestation {
 	
 	@Override
 	public int hashCode() {
-		String address = this.getAddress();
-		if(address == null) address = "";
+		int value = 1;
 		
-		return address.hashCode()*
-			   getStation();
+		String address = this.getAddress();
+		if(address != null) value *= address.hashCode();
+		
+		int station = this.getStation();
+		if(station != 0)value*=station;
+		
+		return value;
 	}
 	
 	@Override

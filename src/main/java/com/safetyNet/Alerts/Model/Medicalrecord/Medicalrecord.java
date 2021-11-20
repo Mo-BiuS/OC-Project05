@@ -47,26 +47,25 @@ public class Medicalrecord {
 	
 	@Override
 	public int hashCode() {
+		
+		int value = 1;
+		
 		String firstName = this.getFirstName();
-		if(firstName == null)firstName = "";
+		if(firstName != null)value*=firstName.hashCode();
 		
 		String lastName = this.getLastName();
-		if(lastName == null)lastName = "";
+		if(lastName != null)value*=lastName.hashCode();
 		
 		Date birthdate = this.getBirthdate();
-		if(birthdate == null)birthdate = new Date();
+		if(birthdate != null)value*=birthdate.hashCode();
 		
 		ArrayList<String> medications = this.getMedications();
-		if(medications == null)medications = new ArrayList<String>();
+		if(medications != null)value*=medications.hashCode();
 		
 		ArrayList<String> allergies = this.getAllergies();
-		if(allergies == null)allergies = new ArrayList<String>();
-		
-		return firstName.hashCode()*
-				lastName.hashCode()*
-				birthdate.hashCode()*
-				medications.hashCode()*
-				allergies.hashCode();
+		if(allergies != null)value*=allergies.hashCode();
+
+		return value;
 	}
 	
 	@Override

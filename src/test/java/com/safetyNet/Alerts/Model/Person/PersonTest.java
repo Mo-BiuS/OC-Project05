@@ -112,5 +112,9 @@ public class PersonTest {
 		assertTrue(personA.hashCode() == personB.hashCode());
 		personA = new Person(null, null, null, null, zipA, null, null);
 		assertTrue(personA.hashCode() == personA.hashCode());
+		
+		personA = new Person(null, lastNameA, adressA, cityA, zipA, phoneA, emailA);
+		personB = new Person(firstNameB, null, adressB, cityB, zipB, phoneB, emailB);
+		assertTrue(personA.hashCode() != personB.hashCode());
 	}
 }

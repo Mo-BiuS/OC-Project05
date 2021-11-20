@@ -107,5 +107,9 @@ public class MedicalRecordTest {
 		assertTrue(medicalRecordTestA.hashCode() == medicalRecordTestB.hashCode());
 		medicalRecordTestA = new Medicalrecord(null, null, null , null, null);
 		assertTrue(medicalRecordTestA.hashCode() == medicalRecordTestA.hashCode());
+		
+		medicalRecordTestA = new Medicalrecord(null, lastNameA, birthdateA , medicationsA, allergiesA);
+		medicalRecordTestB = new Medicalrecord(firstNameB, null, birthdateB , medicationsB, allergiesB);
+		assertTrue(medicalRecordTestA.hashCode() != medicalRecordTestB.hashCode());
 	}
 }
