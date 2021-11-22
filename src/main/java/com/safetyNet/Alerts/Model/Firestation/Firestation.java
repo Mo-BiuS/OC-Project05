@@ -48,6 +48,6 @@ public class Firestation {
 	
 	@Override
 	public String toString() {
-		return "(address : "+this.getAddress()+", station : "+this.getStation()+")";
+		return "{ \"address\" : "+this.getAddress()+", \"station\" : "+this.getStation()+"}";
 	}
 }

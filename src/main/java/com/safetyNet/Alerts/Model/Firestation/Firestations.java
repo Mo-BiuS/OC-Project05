@@ -1,5 +1,6 @@
 package com.safetyNet.Alerts.Model.Firestation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -17,13 +18,45 @@ public class Firestations {
 		return firestations;
 	}
 	
+	public List<Firestation> getByAdress(String value){
+		List<Firestation> list = new ArrayList<Firestation>();
+		for(int i = 0; i < firestations.size(); i++) {
+			if(value.equals(firestations.get(i).getAddress()))list.add(firestations.get(i));
+		}
+		return list;
+	}
+	
+	public List<Firestation> getByStationEqualsTo(int value){
+		List<Firestation> list = new ArrayList<Firestation>();
+		for(int i = 0; i < firestations.size(); i++) {
+			if(value == firestations.get(i).getStation())list.add(firestations.get(i));
+		}
+		return list;
+	}
+	public List<Firestation> getByStationInferiorTo(int value){
+		List<Firestation> list = new ArrayList<Firestation>();
+		for(int i = 0; i < firestations.size(); i++) {
+			if(value < firestations.get(i).getStation())list.add(firestations.get(i));
+		}
+		return list;
+	}
+	public List<Firestation> getByStationSuperiorTo(int value){
+		List<Firestation> list = new ArrayList<Firestation>();
+		for(int i = 0; i < firestations.size(); i++) {
+			if(value > firestations.get(i).getStation())list.add(firestations.get(i));
+		}
+		return list;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
-		buf.append("Firestations : \n");
-		for(int i = 0 ; i < this.getFirestations().size(); i++)
-			buf.append(this.getFirestations().get(i)+"\n");
-		
+		buf.append("Firestations: [");
+		for(int i = 0 ; i < this.getFirestations().size(); i++) {
+			buf.append("\n"+this.getFirestations().get(i));
+			if(i+1 < this.getFirestations().size())buf.append(",");
+		}
+		buf.append("]");
 		return buf.toString();
 	}
 }

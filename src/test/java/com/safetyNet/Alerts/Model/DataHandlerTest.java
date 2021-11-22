@@ -18,7 +18,7 @@ public class DataHandlerTest {
 		    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		    mapper.setDateFormat(df);
 		    
-		    DataHandler data = mapper.readValue(new File("./src/main/resources/data.json"), DataHandler.class);
+		    Data data = mapper.readValue(new File("./src/main/resources/data.json"), Data.class);
 
 		    System.out.println(data);
 

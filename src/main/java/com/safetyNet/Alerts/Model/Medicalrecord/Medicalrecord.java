@@ -85,10 +85,10 @@ public class Medicalrecord {
 	
 	@Override
 	public String toString() {
-		return 	"(firstName : "+this.getFirstName()+
-				", lastName : "+this.getLastName()+
-				", birthdate : "+this.getBirthdate()+
-				", medications : "+this.getMedications()+
-				", allergies : "+this.getAllergies()+")";
+		return 	"{ \"firstName\" : "+this.getFirstName()+
+				", \"lastName\" : "+this.getLastName()+
+				", \"birthdate\" : "+this.getBirthdate()+
+				", \"medications\" : "+this.getMedications()+
+				", \"allergies\" : "+this.getAllergies()+"}";
 	}
 }

@@ -11,14 +11,13 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
 import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
 
-
-public final class DataHandler {
+public final class Data {
 	private final Persons persons;
 	private final Firestations firestations;
 	private final Medicalrecords medicalrecords;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-	public DataHandler(@JsonProperty("persons") List<Person> persons, 
+	public Data(@JsonProperty("persons") List<Person> persons, 
 					   @JsonProperty("firestations")List<Firestation> firestations, 
 					   @JsonProperty("medicalrecords") List<Medicalrecord> medicalrecords) {
 		this.persons = new Persons(persons);
@@ -26,10 +25,20 @@ public final class DataHandler {
 		this.medicalrecords = new Medicalrecords(medicalrecords);
 	}
 
+	public Persons getPersons() {
+		return persons;
+	}
+	public Firestations getFirestations() {
+		return firestations;
+	}
+	public Medicalrecords getMedicalrecords() {
+		return medicalrecords;
+	}
+	
 	@Override
 	public String toString() {
-		return  this.persons+"\n"+
-				this.firestations+"\n"+
-				this.medicalrecords;
+		return  "{"+this.persons+","+
+				this.firestations+","+
+				this.medicalrecords+"}";
 	}
 }

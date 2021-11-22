@@ -97,12 +97,12 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return  "firstName : "+this.getFirstName()+", "+
-				"lastName :"+this.getLastName()+", "+
-				"address :"+this.getAddress()+", "+
-				"city :"+this.getCity()+", "+
-				"zip :"+this.getZip()+", "+
-				"phone :"+this.getPhone()+", "+
-				"email :"+this.getEmail();
+		return  "{ \"firstName\" : "+this.getFirstName()+", "+
+				"\"lastName\" :"+this.getLastName()+", "+
+				"\"address\" :"+this.getAddress()+", "+
+				"\"city\" :"+this.getCity()+", "+
+				"\"zip\" :"+this.getZip()+", "+
+				"\"phone\" :"+this.getPhone()+", "+
+				"\"email\" :"+this.getEmail()+"}";
 	}
 }
