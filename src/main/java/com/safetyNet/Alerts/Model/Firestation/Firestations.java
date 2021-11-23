@@ -18,34 +18,34 @@ public class Firestations {
 		return firestations;
 	}
 	
-	public List<Firestation> getByAdress(String value){
+	public Firestations getByAdress(String value){
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value.equals(firestations.get(i).getAddress()))list.add(firestations.get(i));
 		}
-		return list;
+		return new Firestations(list);
 	}
 	
-	public List<Firestation> getByStationEqualsTo(int value){
+	public Firestations getByStationEqualsTo(int value){
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value == firestations.get(i).getStation())list.add(firestations.get(i));
 		}
-		return list;
+		return new Firestations(list);
 	}
-	public List<Firestation> getByStationInferiorTo(int value){
+	public Firestations getByStationInferiorTo(int value){
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value < firestations.get(i).getStation())list.add(firestations.get(i));
 		}
-		return list;
+		return new Firestations(list);
 	}
-	public List<Firestation> getByStationSuperiorTo(int value){
+	public Firestations getByStationSuperiorTo(int value){
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value > firestations.get(i).getStation())list.add(firestations.get(i));
 		}
-		return list;
+		return new Firestations(list);
 	}
 	
 	@Override

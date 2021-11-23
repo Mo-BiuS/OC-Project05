@@ -19,42 +19,42 @@ public class Medicalrecords {
 		return medicalrecords;
 	}
 	
-	public List<Medicalrecord> getMedicalrecordByFirstName(String value){
+	public Medicalrecords getMedicalrecordByFirstName(String value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.equals(medicalrecords.get(i).getFirstName()))list.add(medicalrecords.get(i));
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByLastName(String value){
+	public Medicalrecords getMedicalrecordByLastName(String value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.equals(medicalrecords.get(i).getLastName()))list.add(medicalrecords.get(i));
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByBirthdayEqualTo(Date value){
+	public Medicalrecords getMedicalrecordByBirthdayEqualTo(Date value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() == medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByBirthdayInferiorTo(Date value){
+	public Medicalrecords getMedicalrecordByBirthdayInferiorTo(Date value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() < medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByBirthdaySuperiorTo(Date value){
+	public Medicalrecords getMedicalrecordByBirthdaySuperiorTo(Date value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() > medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByMedication(String value){
+	public Medicalrecords getMedicalrecordByMedication(String value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			for(int j = 0; j < medicalrecords.get(i).getMedications().size(); j++) 
@@ -65,9 +65,9 @@ public class Medicalrecords {
 				}
 			}
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
-	public List<Medicalrecord> getMedicalrecordByAllergies(String value){
+	public Medicalrecords getMedicalrecordByAllergies(String value){
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			for(int j = 0; j < medicalrecords.get(i).getAllergies().size(); j++) 
@@ -78,7 +78,7 @@ public class Medicalrecords {
 				}
 			}
 		}
-		return list;
+		return new Medicalrecords(list);
 	}
 	
 	@Override

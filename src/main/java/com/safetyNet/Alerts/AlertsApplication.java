@@ -1,11 +1,17 @@
 package com.safetyNet.Alerts;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.safetyNet.Alerts.Model.Person;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.safetyNet.Alerts.Model.Data;
+import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Service.BusinessService;
 
 @SpringBootApplication
@@ -20,9 +26,6 @@ public class AlertsApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Person hw = bs.getHelloWorld();
-		
-		System.out.println(hw);
 	}
 
 }

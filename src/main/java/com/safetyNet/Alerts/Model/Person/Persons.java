@@ -19,54 +19,61 @@ public class Persons {
 		return persons;
 	}
 	
-	public List<Person> getPersonByFirstName(String value){
+	public Persons getPersonByFirstName(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getFirstName()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByLastName(String value){
+	public Persons getPersonByLastName(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getLastName()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByAdress(String value){
+	public Persons getPersonByAdress(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getAddress()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByCity(String value){
+	public Persons getPersonByCity(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getCity()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByPhone(String value){
+	public Persons getPersonByPhone(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getPhone()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByEmail(String value){
+	public Persons getPersonByEmail(String value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getEmail()))list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
 	}
-	public List<Person> getPersonByZip(int value){
+	public Persons getPersonByZip(int value){
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value == persons.get(i).getZip())list.add(persons.get(i));
 		}
-		return list;
+		return new Persons(list);
+	}
+	
+	public Persons concat(Persons persons) {
+		List<Person> list = new ArrayList<Person>();
+		list.addAll(this.persons);
+		list.addAll(persons.getPersons());
+		return new Persons(list);
 	}
 	
 	@Override
