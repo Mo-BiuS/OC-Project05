@@ -2,6 +2,7 @@ package com.safetyNet.Alerts.Controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +29,9 @@ public class AppController {
 		eighteenYear.setTime( (long) (System.currentTimeMillis() - ( 18 * 365.25 * 24 * 60 * 60 * 1000)) ); //18 years ago
 	}
 	
-	@RequestMapping(value = "/getString", method = RequestMethod.GET)
-    public Data listeProduits() {
-        return DataHandler.DATA;
-    }
-	
 	@GetMapping("/firestation")
 	@ResponseBody
-	public ReqFirestation firestation(@RequestParam(required = false) int stationNumber) { 
+	public ReqFirestation firestation(@RequestParam(required = true) int stationNumber) { 
 		Firestations concernedStation = DataHandler.DATA.getFirestations().getByStationEqualsTo(stationNumber);
 		Persons concernedPeople = new Persons(new ArrayList<Person>());
 		for(int i = 0; i < concernedStation.getFirestations().size(); i++) {
@@ -57,7 +53,7 @@ public class AppController {
 	
 	@GetMapping("/childAlert")
 	@ResponseBody
-	public ChildAlert childAlert(@RequestParam(required = false) String address) { 
+	public ChildAlert childAlert(@RequestParam(required = true) String address) { 
 		
 		Persons peopleList = DataHandler.DATA.getPersons().getPersonByAdress(address);
 		Medicalrecords childList = new Medicalrecords(new ArrayList<Medicalrecord>());
@@ -74,5 +70,18 @@ public class AppController {
 		}
 
 		return new ChildAlert(childList,adultList);
+	}
+	
+	@GetMapping("/phoneAlert")
+	@ResponseBody
+	public List<String> phoneAlert(@RequestParam(required = true) int stationNumber) { 
+		ArrayList<String> reply = new ArrayList<String>();
+		
+		DataHandler.DATA.getFirestations().getByStationEqualsTo(stationNumber)
+			.getFirestations().forEach(
+				firestation -> DataHandler.DATA.getPersons().getPersonByAdress(firestation.getAddress()).getPersons().forEach(
+						person -> reply.add(person.getPhone())));
+		
+		return reply;
 	}
 }
