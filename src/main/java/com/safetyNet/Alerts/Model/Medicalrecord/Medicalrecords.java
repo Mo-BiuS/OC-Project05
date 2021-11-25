@@ -81,6 +81,13 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	
+	public Medicalrecords concat(Medicalrecords medicalrecords) {
+		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
+		list.addAll(this.medicalrecords);
+		list.addAll(medicalrecords.getMedicalrecords());
+		return new Medicalrecords(list);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

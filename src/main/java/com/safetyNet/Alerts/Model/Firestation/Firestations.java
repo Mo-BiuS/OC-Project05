@@ -48,6 +48,13 @@ public class Firestations {
 		return new Firestations(list);
 	}
 	
+	public Firestations concat(Firestations firestations) {
+		List<Firestation> list = new ArrayList<Firestation>();
+		list.addAll(this.getFirestations());
+		list.addAll(firestations.getFirestations());
+		return new Firestations(list);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
