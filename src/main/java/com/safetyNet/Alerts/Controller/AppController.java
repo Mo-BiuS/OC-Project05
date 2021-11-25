@@ -20,6 +20,7 @@ import com.safetyNet.Alerts.Model.Reply.ReqChildAlert;
 import com.safetyNet.Alerts.Model.Reply.ReqFire;
 import com.safetyNet.Alerts.Model.Reply.ReqFirestation;
 import com.safetyNet.Alerts.Model.Reply.ReqFloodStations;
+import com.safetyNet.Alerts.Model.Reply.ReqPersonInfo;
 import com.safetyNet.Alerts.Service.DataHandler;
 
 @RestController
@@ -119,5 +120,31 @@ public class AppController {
 		concernedPeople.getPersons().forEach(item -> uniqueAddress.add(item.getAddress()));
 		
 		return new ReqFloodStations(concernedPeople, records, new ArrayList<String>(uniqueAddress));
+	}
+	
+	@GetMapping("/personInfo")
+	@ResponseBody
+	public ReqPersonInfo personInfo(@RequestParam(required = false) String firstName, @RequestParam(required = true) String lastName) {
+		
+		Persons concernedPeople = DataHandler.DATA.getPersons().getPersonByLastName(lastName);
+		Medicalrecords records = DataHandler.DATA.getMedicalrecords().getMedicalrecordByLastName(lastName);
+		
+		if(firstName != null) {
+			concernedPeople = concernedPeople.getPersonByFirstName(firstName);
+			records = records.getMedicalrecordByFirstName(firstName);
+		}
+		
+		return new ReqPersonInfo(concernedPeople, records);
+	}
+	
+	@GetMapping("/communityEmail")
+	@ResponseBody
+	public List<String> communityEmail(@RequestParam(required = true) String city) {
+		Persons concernedPeople = DataHandler.DATA.getPersons().getPersonByCity(city);
+
+		HashSet<String> reply = new HashSet<String>();
+		concernedPeople.getPersons().forEach(item -> reply.add(item.getEmail()));
+		
+		return new ArrayList<String>(reply);
 	}
 }

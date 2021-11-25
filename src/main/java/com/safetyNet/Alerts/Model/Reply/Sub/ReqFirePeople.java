@@ -17,7 +17,7 @@ public class ReqFirePeople {
 		this.firstName = p.getFirstName();
 		this.lastName = p.getLastName();
 		this.phone = p.getPhone();
-		this.birthdate = (long) (((System.currentTimeMillis()-mr.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
+		this.birthdate = mr.getAge();
 		this.medications = mr.getMedications();
 		this.allergies = mr.getAllergies();
 	}

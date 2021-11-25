@@ -44,6 +44,9 @@ public class Medicalrecord {
 	public ArrayList<String> getAllergies() {
 		return allergies;
 	}
+	public long getAge() {
+		return (long) (((System.currentTimeMillis()-this.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
+	}
 	
 	@Override
 	public int hashCode() {
