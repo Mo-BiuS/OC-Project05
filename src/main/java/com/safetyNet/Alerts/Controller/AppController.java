@@ -17,7 +17,8 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
 import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
-import com.safetyNet.Alerts.Model.Reply.ChildAlert;
+import com.safetyNet.Alerts.Model.Reply.ReqChildAlert;
+import com.safetyNet.Alerts.Model.Reply.ReqFire;
 import com.safetyNet.Alerts.Model.Reply.ReqFirestation;
 import com.safetyNet.Alerts.Service.DataHandler;
 
@@ -53,7 +54,7 @@ public class AppController {
 	
 	@GetMapping("/childAlert")
 	@ResponseBody
-	public ChildAlert childAlert(@RequestParam(required = true) String address) { 
+	public ReqChildAlert childAlert(@RequestParam(required = true) String address) { 
 		
 		Persons peopleList = DataHandler.DATA.getPersons().getPersonByAdress(address);
 		Medicalrecords childList = new Medicalrecords(new ArrayList<Medicalrecord>());
@@ -69,7 +70,7 @@ public class AppController {
 			adultList = adultList.concat(peoplesSubList.getMedicalrecordByBirthdayEqualTo(eighteenYear));
 		}
 
-		return new ChildAlert(childList,adultList);
+		return new ReqChildAlert(childList,adultList);
 	}
 	
 	@GetMapping("/phoneAlert")
@@ -84,4 +85,25 @@ public class AppController {
 		
 		return reply;
 	}
+	
+	@GetMapping("/fire")
+	@ResponseBody
+	public ReqFire fire(@RequestParam(required = true) String address) { 
+		Firestations stations = DataHandler.DATA.getFirestations().getByAdress(address);
+		Persons peoples =  DataHandler.DATA.getPersons().getPersonByAdress(address);
+		Medicalrecords records = new Medicalrecords(new ArrayList<Medicalrecord>());
+		for(int i = 0; i < peoples.getPersons().size(); i++)
+			records = records.concat(DataHandler.DATA.getMedicalrecords()
+												.getMedicalrecordByFirstName(peoples.getPersons().get(i).getFirstName())
+												.getMedicalrecordByLastName(peoples.getPersons().get(i).getLastName()));
+		
+		return new ReqFire(records, peoples, stations);
+	}
+	
+//	@GetMapping("/flood/stations")
+//	@ResponseBody
+//	public ReqFire floodStations(@RequestParam(required = true) List<Integer> stations) { 
+//		
+//		return new ReqFire(records, peoples, stations);
+//	}
 }
