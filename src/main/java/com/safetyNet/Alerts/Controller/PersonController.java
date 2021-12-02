@@ -1,9 +1,7 @@
 package com.safetyNet.Alerts.Controller;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,31 +20,27 @@ public class PersonController {
 	private final Persons persons = DataHandler.DATA.getPersons();
 	
 	@GetMapping("/person")
-	public Persons findAllBooks() {
+	public Persons findAllPerson() {
 		return persons;
 	}
 
 	@GetMapping("/person/{firstName}/{lastName}")
-	public Persons findBookById(@PathVariable String firstName, @PathVariable String lastName) {
+	public Persons findPerson(@PathVariable String firstName, @PathVariable String lastName) {
 		return persons.getPersonByFirstName(firstName).getPersonByLastName(lastName);
 	}
 	
 	@PostMapping("/person")
-	public ResponseEntity<Person> addBook(@RequestBody Person person) throws URISyntaxException{
-		persons.add(person);
-		return ResponseEntity.created(new URI("/rest/v1/books/" + person.getFirstName() + person.getLastName())).body(person);
+	public boolean addPerson(@RequestBody Person person) throws URISyntaxException{
+		return persons.add(person);
 	}
 	
 	@PutMapping("/person")
-	public ResponseEntity<Void> updateBook(@RequestBody Person person) {
-		persons.replace(person);
-		return ResponseEntity.ok().build();
+	public boolean updatePerson(@RequestBody Person person) {
+		return persons.replace(person);
 	}
 	
 	@DeleteMapping(path="/person/{firstName}/{lastName}")
-	public ResponseEntity<Void> deleteBookById(@PathVariable String firstName, @PathVariable String lastName) {
-	    persons.delete(new Person(firstName, lastName, null, null, 0, null, null));
-	    return ResponseEntity.ok().build();
-
+	public boolean deletePerson(@PathVariable String firstName, @PathVariable String lastName) {
+	    return persons.delete(new Person(firstName, lastName, null, null, 0, null, null));
 	}
 }
