@@ -52,6 +52,8 @@ public class Person {
 		return zip;
 	}
 	
+	
+	
 	@Override
 	public int hashCode() {
 		int value = 1;
@@ -94,6 +96,10 @@ public class Person {
 					test.getZip() == this.getZip());
 		}
 		else return false;
+	}
+	public boolean compare(Person person) {
+		return this.getFirstName().equals(person.getFirstName()) &&
+				this.getLastName().equals(person.getLastName());
 	}
 	@Override
 	public String toString() {

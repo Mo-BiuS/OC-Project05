@@ -46,6 +46,10 @@ public class Firestation {
 		else return false;
 	}
 	
+	public boolean compare(Firestation firestation) {
+		return this.getAddress().equals(firestation.getAddress());
+	}
+	
 	@Override
 	public String toString() {
 		return "{ \"address\" : "+this.getAddress()+", \"station\" : "+this.getStation()+"}";
