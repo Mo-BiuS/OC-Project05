@@ -85,6 +85,7 @@ public class Medicalrecord {
 		}
 		else return false;
 	}
+	
 	public boolean compare(Medicalrecord medicalRecord) {
 		return this.getFirstName().equals(medicalRecord.getFirstName()) &&
 				this.getLastName().equals(medicalRecord.getLastName());

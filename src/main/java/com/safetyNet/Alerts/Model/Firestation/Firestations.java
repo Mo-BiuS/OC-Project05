@@ -55,6 +55,32 @@ public class Firestations {
 		return new Firestations(list);
 	}
 	
+	public boolean contain(Firestation firestation) {
+		for(Firestation f : firestations)
+			if(f.compare(firestation))return true;
+		
+		return false;
+	}
+	
+	public boolean replace(Firestation firestation) {
+		return this.delete(firestation) && this.add(firestation);
+	}
+	public boolean delete(Firestation firestation) {
+		for(Firestation p : firestations)
+			if(p.compare(firestation)) {
+				firestations.remove(p);
+				return true;
+			}
+		return false;
+	}
+	public boolean add(Firestation firestation) {
+		if(!this.contain(firestation)) {
+			firestations.add(firestation);
+			return true;
+		}
+		else return false;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

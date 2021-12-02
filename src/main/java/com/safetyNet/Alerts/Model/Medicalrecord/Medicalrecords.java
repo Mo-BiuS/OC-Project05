@@ -88,6 +88,31 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	
+	public boolean contain(Medicalrecord medicalrecord) {
+		for(Medicalrecord m : medicalrecords)
+			if(m.compare(medicalrecord))return true;
+		
+		return false;
+	}
+	public boolean replace(Medicalrecord medicalrecord) {
+		return this.delete(medicalrecord) && this.add(medicalrecord);
+	}
+	public boolean delete(Medicalrecord medicalrecord) {
+		for(Medicalrecord p : medicalrecords)
+			if(p.compare(medicalrecord)) {
+				medicalrecords.remove(p);
+				return true;
+			}
+		return false;
+	}
+	public boolean add(Medicalrecord medicalrecord) {
+		if(!this.contain(medicalrecord)) {
+			medicalrecords.add(medicalrecord);
+			return true;
+		}
+		else return false;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

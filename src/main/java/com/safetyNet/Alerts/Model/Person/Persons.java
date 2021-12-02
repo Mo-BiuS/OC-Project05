@@ -75,6 +75,31 @@ public class Persons {
 		list.addAll(persons.getPersons());
 		return new Persons(list);
 	}
+
+	public boolean contain(Person person) {
+		for(Person p : persons)
+			if(p.compare(person))return true;
+		
+		return false;
+	}
+	public boolean replace(Person person) {
+		return this.delete(person) && this.add(person);
+	}
+	public boolean delete(Person person) {
+		for(Person p : persons)
+			if(p.compare(person)) {
+				persons.remove(p);
+				return true;
+			}
+		return false;
+	}
+	public boolean add(Person person) {
+		if(!this.contain(person)) {
+			persons.add(person);
+			return true;
+		}
+		else return false;
+	}
 	
 	@Override
 	public String toString() {
