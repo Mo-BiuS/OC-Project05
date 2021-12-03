@@ -72,7 +72,7 @@ public class Medicalrecords {
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			for(int j = 0; j < medicalrecords.get(i).getAllergies().size(); j++) 
 			{
-				if(value.equals(medicalrecords.get(i).getAllergies().get(i))) {
+				if(value.equals(medicalrecords.get(i).getAllergies().get(j))) {
 					list.add(medicalrecords.get(i));
 					break;
 				}
@@ -112,7 +112,10 @@ public class Medicalrecords {
 		}
 		else return false;
 	}
-	
+	@Override
+	public int hashCode() {
+		return medicalrecords.hashCode();
+	}
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

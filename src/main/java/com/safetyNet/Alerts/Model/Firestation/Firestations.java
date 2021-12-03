@@ -26,28 +26,14 @@ public class Firestations {
 		return new Firestations(list);
 	}
 	
-	public Firestations getByStationEqualsTo(int value){
+	public Firestations getByStation(int value){
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value == firestations.get(i).getStation())list.add(firestations.get(i));
 		}
 		return new Firestations(list);
 	}
-	public Firestations getByStationInferiorTo(int value){
-		List<Firestation> list = new ArrayList<Firestation>();
-		for(int i = 0; i < firestations.size(); i++) {
-			if(value < firestations.get(i).getStation())list.add(firestations.get(i));
-		}
-		return new Firestations(list);
-	}
-	public Firestations getByStationSuperiorTo(int value){
-		List<Firestation> list = new ArrayList<Firestation>();
-		for(int i = 0; i < firestations.size(); i++) {
-			if(value > firestations.get(i).getStation())list.add(firestations.get(i));
-		}
-		return new Firestations(list);
-	}
-	
+
 	public Firestations concat(Firestations firestations) {
 		List<Firestation> list = new ArrayList<Firestation>();
 		list.addAll(this.getFirestations());
@@ -79,6 +65,11 @@ public class Firestations {
 			return true;
 		}
 		else return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return firestations.hashCode();
 	}
 	
 	@Override

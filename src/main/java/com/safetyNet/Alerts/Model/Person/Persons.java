@@ -100,7 +100,10 @@ public class Persons {
 		}
 		else return false;
 	}
-	
+	@Override
+	public int hashCode() {
+		return persons.hashCode();
+	}
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

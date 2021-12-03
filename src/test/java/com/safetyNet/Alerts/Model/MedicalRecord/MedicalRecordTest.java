@@ -112,4 +112,13 @@ public class MedicalRecordTest {
 		medicalRecordTestB = new Medicalrecord(firstNameB, null, birthdateB , medicationsB, allergiesB);
 		assertTrue(medicalRecordTestA.hashCode() != medicalRecordTestB.hashCode());
 	}
+	
+	@Test 
+	public void compareTest(){
+		assertFalse(medicalRecordTestA.compare(medicalRecordTestB));
+		
+		medicalRecordTestB = new Medicalrecord(firstNameA, lastNameA, birthdateB , medicationsB, allergiesB);
+		assertTrue(medicalRecordTestA.compare(medicalRecordTestA));
+		assertTrue(medicalRecordTestA.compare(medicalRecordTestB));
+	}
 }

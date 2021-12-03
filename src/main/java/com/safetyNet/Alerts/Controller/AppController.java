@@ -34,7 +34,7 @@ public class AppController {
 	@GetMapping("/firestation")
 	@ResponseBody
 	public ReqFirestation firestation(@RequestParam(required = true) int stationNumber) { 
-		Firestations concernedStation = DataHandler.DATA.getFirestations().getByStationEqualsTo(stationNumber);
+		Firestations concernedStation = DataHandler.DATA.getFirestations().getByStation(stationNumber);
 		Persons concernedPeople = new Persons(new ArrayList<Person>());
 		for(int i = 0; i < concernedStation.getFirestations().size(); i++) {
 			concernedPeople = concernedPeople.concat(DataHandler.DATA.getPersons().getPersonByAdress(concernedStation.getFirestations().get(i).getAddress()));
@@ -79,7 +79,7 @@ public class AppController {
 	public List<String> phoneAlert(@RequestParam(required = true) int stationNumber) { 
 		ArrayList<String> reply = new ArrayList<String>();
 		
-		DataHandler.DATA.getFirestations().getByStationEqualsTo(stationNumber)
+		DataHandler.DATA.getFirestations().getByStation(stationNumber)
 			.getFirestations().forEach(
 				firestation -> DataHandler.DATA.getPersons().getPersonByAdress(firestation.getAddress()).getPersons().forEach(
 						person -> reply.add(person.getPhone())));
@@ -106,7 +106,7 @@ public class AppController {
 	public ReqFloodStations ReqFloodStations(@RequestParam(required = true) List<Integer> stations) { 
 		Firestations concernedStation = new Firestations(new ArrayList<Firestation>());
 		for(int i = 0; i < stations.size(); i++)
-			concernedStation = concernedStation.concat(DataHandler.DATA.getFirestations().getByStationEqualsTo(stations.get(i)));
+			concernedStation = concernedStation.concat(DataHandler.DATA.getFirestations().getByStation(stations.get(i)));
 		Persons concernedPeople = new Persons(new ArrayList<Person>());
 		for(int i = 0; i < concernedStation.getFirestations().size(); i++)
 			concernedPeople = concernedPeople.concat(DataHandler.DATA.getPersons().getPersonByAdress(concernedStation.getFirestations().get(i).getAddress()));

@@ -117,4 +117,12 @@ public class PersonTest {
 		personB = new Person(firstNameB, null, adressB, cityB, zipB, phoneB, emailB);
 		assertTrue(personA.hashCode() != personB.hashCode());
 	}
+	@Test 
+	public void compareTest(){
+		assertFalse(personA.compare(personB));
+		
+		personB =  new Person(firstNameA, lastNameA, adressB, cityB, zipB, phoneB, emailB);
+		assertTrue(personA.compare(personA));
+		assertTrue(personA.compare(personB));
+	}
 }
