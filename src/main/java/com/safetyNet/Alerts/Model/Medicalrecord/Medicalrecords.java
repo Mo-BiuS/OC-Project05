@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Medicalrecords {
-	private final List<Medicalrecord> medicalrecords;
+	private  List<Medicalrecord> medicalrecords;
 
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Medicalrecords(@JsonProperty("medicalrecords") List<Medicalrecord> medicalrecords) {

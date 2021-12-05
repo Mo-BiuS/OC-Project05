@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Medicalrecord {
-	private final String firstName;
-	private final String lastName;
-	private final Date birthdate;
-	private final ArrayList<String> medications;
-	private final ArrayList<String> allergies;
+	private  String firstName;
+	private  String lastName;
+	private  Date birthdate;
+	private  ArrayList<String> medications;
+	private  ArrayList<String> allergies;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Medicalrecord(@JsonProperty("firstName") String firstName, 

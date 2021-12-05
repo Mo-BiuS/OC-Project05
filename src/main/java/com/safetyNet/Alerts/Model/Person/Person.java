@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person {
 
-	private final String firstName;
-	private final String lastName;
-	private final String address;
-	private final String city;
-	private final String phone;
-	private final String email;
-	private final int zip;
+	private  String firstName;
+	private  String lastName;
+	private  String address;
+	private  String city;
+	private  String phone;
+	private  String email;
+	private  int zip;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Person(@JsonProperty("firstName") String firstName, 

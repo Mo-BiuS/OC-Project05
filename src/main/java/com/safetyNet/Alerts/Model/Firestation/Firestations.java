@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Firestations {
-	private final List<Firestation> firestations;
+	private  List<Firestation> firestations;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Firestations(@JsonProperty("firestations") List<Firestation> firestations) {

@@ -18,27 +18,27 @@ public class MedicalrecordController {
 private final Medicalrecords medicalRecords = DataHandler.DATA.getMedicalrecords();
 	
 	@GetMapping("/medicalRecord")
-	public Medicalrecords findAllPerson() {
+	public Medicalrecords findAllMedicalrecords() {
 		return medicalRecords;
 	}
 
 	@GetMapping("/medicalRecord/{firstName}/{lastName}")
-	public Medicalrecords findPerson(@PathVariable String firstName, @PathVariable String lastName) {
+	public Medicalrecords findMedicalrecords(@PathVariable String firstName, @PathVariable String lastName) {
 		return medicalRecords.getMedicalrecordByFirstName(firstName).getMedicalrecordByLastName(lastName);
 	}
 	
 	@PostMapping("/medicalRecord")
-	public boolean addPerson(@RequestBody Medicalrecord medicalRecord) throws URISyntaxException{
+	public boolean addMedicalrecords(@RequestBody Medicalrecord medicalRecord) throws URISyntaxException{
 		return medicalRecords.add(medicalRecord);
 	}
 	
 	@PutMapping("/medicalRecord")
-	public boolean updatePerson(@RequestBody Medicalrecord medicalRecord) {
+	public boolean updateMedicalrecords(@RequestBody Medicalrecord medicalRecord) {
 		return medicalRecords.replace(medicalRecord);
 	}
 	
 	@DeleteMapping(path="/medicalRecord/{firstName}/{lastName}")
-	public boolean deletePerson(@PathVariable String firstName, @PathVariable String lastName) {
+	public boolean deleteMedicalrecords(@PathVariable String firstName, @PathVariable String lastName) {
 	    return medicalRecords.delete(new Medicalrecord(firstName, lastName, null, null, null));
 	}
 }

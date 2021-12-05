@@ -32,12 +32,12 @@ public class FirestationController {
 	}
 	
 	@PutMapping("/firestation")
-	public boolean updatePerson(@RequestBody Firestation firestation) {
+	public boolean updateFirestation(@RequestBody Firestation firestation) {
 		return firestations.replace(firestation);
 	}
 	
 	@DeleteMapping(path="/firestation/{address}")
-	public boolean deletePerson(@PathVariable String address) {
+	public boolean deleteFirestation(@PathVariable String address) {
 	    return firestations.delete(new Firestation(address, 0));
 	}
 }

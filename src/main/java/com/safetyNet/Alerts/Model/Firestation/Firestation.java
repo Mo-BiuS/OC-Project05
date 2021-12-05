@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Firestation {
-	private final String address;
-	private final int station;
+	private String address;
+	private int station;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Firestation(@JsonProperty("address") String address, 
