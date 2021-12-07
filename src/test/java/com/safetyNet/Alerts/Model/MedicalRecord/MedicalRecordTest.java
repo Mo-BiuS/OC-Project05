@@ -88,18 +88,7 @@ public class MedicalRecordTest {
 			assertEquals(allergiesA.get(i), medicalRecordTestA.getAllergies().get(i));
 		}
 	}
-	
-	@Test
-	public void equalsTest() {
-		assertFalse(medicalRecordTestA.equals(new Object()));
-		
-		assertFalse(medicalRecordTestA.equals(medicalRecordTestB));
-		assertFalse(medicalRecordTestB.equals(medicalRecordTestA));
-		
-		medicalRecordTestB = new Medicalrecord(firstNameA, lastNameA, birthdateA , medicationsA, allergiesA);
-		assertTrue(medicalRecordTestA.equals(medicalRecordTestB));
-		assertTrue(medicalRecordTestA.equals(medicalRecordTestA));
-	}
+
 	@Test
 	public void hashTest() {
 		assertTrue(medicalRecordTestA.hashCode() != medicalRecordTestB.hashCode());

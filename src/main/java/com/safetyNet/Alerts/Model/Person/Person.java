@@ -81,22 +81,7 @@ public class Person {
 		
 		return value;
 	}
-	@Override
-	public boolean equals(Object o) {
-		if(o == this)return true;
-		
-		if(o instanceof Person) {
-			Person test = (Person)o;
-			return (test.getFirstName().equals(this.getFirstName()) &&
-					test.getLastName().equals(this.getLastName()) &&
-					test.getAddress().equals(this.getAddress()) &&
-					test.getCity().equals(this.getCity()) &&
-					test.getPhone().equals(this.getPhone()) &&
-					test.getEmail().equals(this.getEmail()) &&
-					test.getZip() == this.getZip());
-		}
-		else return false;
-	}
+	
 	public boolean compare(Person person) {
 		return this.getFirstName().equals(person.getFirstName()) &&
 				this.getLastName().equals(person.getLastName());

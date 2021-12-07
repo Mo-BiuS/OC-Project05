@@ -95,17 +95,6 @@ public class PersonTest {
 	}
 	
 	@Test
-	public void equalsTest() {
-		assertFalse(personA.equals(new Object()));
-		
-		assertFalse(personA.equals(personB));
-		assertFalse(personB.equals(personA));
-		
-		personB = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);
-		assertTrue(personA.equals(personB));
-		assertTrue(personA.equals(personA));
-	}
-	@Test
 	public void hashTest() {
 		assertTrue(personA.hashCode() != personB.hashCode());
 		personB = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);

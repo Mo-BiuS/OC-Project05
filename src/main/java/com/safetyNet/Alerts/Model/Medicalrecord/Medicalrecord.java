@@ -71,21 +71,6 @@ public class Medicalrecord {
 		return value;
 	}
 	
-	@Override
-	public boolean equals(Object o) {
-		if(o == this)return true;
-		
-		if(o instanceof Medicalrecord) {
-			Medicalrecord test = (Medicalrecord)o;
-			return (test.getFirstName().equals(this.getFirstName()) &&
-					test.getLastName().equals(this.getLastName()) &&
-					test.getBirthdate().equals(this.getBirthdate()) &&
-					test.getMedications().equals(this.getMedications()) &&
-					test.getAllergies().equals(this.getAllergies()));
-		}
-		else return false;
-	}
-	
 	public boolean compare(Medicalrecord medicalRecord) {
 		return this.getFirstName().equals(medicalRecord.getFirstName()) &&
 				this.getLastName().equals(medicalRecord.getLastName());

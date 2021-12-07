@@ -31,6 +31,11 @@ public class AppController {
 		eighteenYear.setTime( (long) (System.currentTimeMillis() - ( 18 * 365.25 * 24 * 60 * 60 * 1000)) ); //18 years ago
 	}
 	
+//	Cette url doit retourner une liste des personnes couvertes par la caserne de pompiers correspondante. 
+//	Donc, si le numéro de station = 1, elle doit renvoyer les habitants couverts par la station numéro 1. La liste 
+//	doit inclure les informations spécifiques suivantes : prénom, nom, adresse, numéro de téléphone. De plus, 
+//	elle doit fournir un décompte du nombre d'adultes et du nombre d'enfants (tout individu âgé de 18 ans ou 
+//	moins) dans la zone desservie.
 	@GetMapping("/firestation")
 	@ResponseBody
 	public ReqFirestation firestation(@RequestParam(required = true) int stationNumber) { 
@@ -47,12 +52,15 @@ public class AppController {
 												.getMedicalrecordByLastName(concernedPeople.getPersons().get(i).getLastName()));
 		}
 		
-		int childCount = peopleAges.getMedicalrecordByBirthdaySuperiorTo(eighteenYear).getMedicalrecords().size();
-		int adultCount = peopleAges.getMedicalrecords().size()-childCount;
+		int adultCount  = peopleAges.getMedicalrecordByBirthdaySuperiorTo(eighteenYear).getMedicalrecords().size();
+		int childCount = peopleAges.getMedicalrecords().size()-adultCount;
 		
 	    return new ReqFirestation(concernedPeople,adultCount, childCount);
 	}
 	
+//	Cette url doit retourner une liste d'enfants (tout individu âgé de 18 ans ou moins) habitant à cette adresse. 
+//	La liste doit comprendre le prénom et le nom de famille de chaque enfant, son âge et une liste des autres 
+//	membres du foyer. S'il n'y a pas d'enfant, cette url peut renvoyer une chaîne vide
 	@GetMapping("/childAlert")
 	@ResponseBody
 	public ReqChildAlert childAlert(@RequestParam(required = true) String address) { 
@@ -74,6 +82,8 @@ public class AppController {
 		return new ReqChildAlert(childList,adultList);
 	}
 	
+//	Cette url doit retourner une liste des numéros de téléphone des résidents desservis par la caserne de 
+//	pompiers. Nous l'utiliserons pour envoyer des messages texte d'urgence à des foyers spécifiques. 
 	@GetMapping("/phoneAlert")
 	@ResponseBody
 	public List<String> phoneAlert(@RequestParam(required = true) int stationNumber) { 
@@ -87,6 +97,9 @@ public class AppController {
 		return reply;
 	}
 	
+//	Cette url doit retourner la liste des habitants vivant à l’adresse donnée ainsi que le numéro de la caserne 
+//	de pompiers la desservant. La liste doit inclure le nom, le numéro de téléphone, l'âge et les antécédents 
+//	médicaux (médicaments, posologie et allergies) de chaque personne. 
 	@GetMapping("/fire")
 	@ResponseBody
 	public ReqFire fire(@RequestParam(required = true) String address) { 
@@ -101,9 +114,12 @@ public class AppController {
 		return new ReqFire(records, peoples, stations);
 	}
 	
+//	Cette url doit retourner une liste de tous les foyers desservis par la caserne. Cette liste doit regrouper les 
+//	personnes par adresse. Elle doit aussi inclure le nom, le numéro de téléphone et l'âge des habitants, et 
+//	faire figurer leurs antécédents médicaux (médicaments, posologie et allergies) à côté de chaque nom. 
 	@GetMapping("/flood/stations")
 	@ResponseBody
-	public ReqFloodStations ReqFloodStations(@RequestParam(required = true) List<Integer> stations) { 
+	public ReqFloodStations reqFloodStations(@RequestParam(required = true) List<Integer> stations) { 
 		Firestations concernedStation = new Firestations(new ArrayList<Firestation>());
 		for(int i = 0; i < stations.size(); i++)
 			concernedStation = concernedStation.concat(DataHandler.DATA.getFirestations().getByStation(stations.get(i)));
@@ -122,6 +138,9 @@ public class AppController {
 		return new ReqFloodStations(concernedPeople, records, new ArrayList<String>(uniqueAddress));
 	}
 	
+//	Cette url doit retourner le nom, l'adresse, l'âge, l'adresse mail et les antécédents médicaux (médicaments, 
+//	posologie, allergies) de chaque habitant. Si plusieurs personnes portent le même nom, elles doivent 
+//	toutes apparaître. 
 	@GetMapping("/personInfo")
 	@ResponseBody
 	public ReqPersonInfo personInfo(@RequestParam(required = false) String firstName, @RequestParam(required = true) String lastName) {
@@ -137,6 +156,7 @@ public class AppController {
 		return new ReqPersonInfo(concernedPeople, records);
 	}
 	
+//	Cette url doit retourner les adresses mail de tous les habitants de la ville.
 	@GetMapping("/communityEmail")
 	@ResponseBody
 	public List<String> communityEmail(@RequestParam(required = true) String city) {

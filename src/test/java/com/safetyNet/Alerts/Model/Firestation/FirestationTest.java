@@ -44,17 +44,7 @@ public class FirestationTest {
 		assertEquals(stationA, firestationA.getStation());
 	}
 	
-	@Test
-	public void equalsTest() {
-		assertFalse(firestationA.equals(new Object()));
-		
-		assertFalse(firestationA.equals(firestationB));
-		assertFalse(firestationB.equals(firestationA));
-		
-		firestationB = new Firestation(adressA, stationA);
-		assertTrue(firestationA.equals(firestationA));
-		assertTrue(firestationA.equals(firestationB));
-	}
+
 	@Test
 	public void hashTest() {
 		assertTrue(firestationA.hashCode() != firestationB.hashCode());

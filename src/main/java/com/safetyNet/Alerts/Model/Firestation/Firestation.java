@@ -33,18 +33,7 @@ public class Firestation {
 		
 		return value;
 	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if(o == this)return true;
-		
-		if(o instanceof Firestation) {
-			Firestation test = (Firestation)o;
-			return (test.getAddress().equals(this.getAddress()) &&
-					test.getStation() == this.getStation());
-		}
-		else return false;
-	}
+
 	
 	public boolean compare(Firestation firestation) {
 		return this.getAddress().equals(firestation.getAddress());
