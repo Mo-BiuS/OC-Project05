@@ -9,6 +9,10 @@ import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
 import com.safetyNet.Alerts.Model.Reply.Sub.ReqPersonInfoPeople;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
+justification = "Ressources used as output in URI")
 public class ReqPersonInfo {
 
 	public final List<ReqPersonInfoPeople> peoples;

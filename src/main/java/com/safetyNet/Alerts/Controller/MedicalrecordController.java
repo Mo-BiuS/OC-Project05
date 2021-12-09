@@ -15,7 +15,7 @@ import com.safetyNet.Alerts.Service.DataHandler;
 
 public class MedicalrecordController {
 	
-private final Medicalrecords medicalRecords = DataHandler.DATA.getMedicalrecords();
+private final Medicalrecords medicalRecords = DataHandler.getData().getMedicalrecords();
 	
 	@GetMapping("/medicalRecord")
 	public Medicalrecords findAllMedicalrecords() {

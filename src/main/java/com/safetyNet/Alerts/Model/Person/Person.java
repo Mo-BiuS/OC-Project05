@@ -81,6 +81,13 @@ public class Person {
 		
 		return value;
 	}
+	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Person) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
 	
 	public boolean compare(Person person) {
 		return this.getFirstName().equals(person.getFirstName()) &&

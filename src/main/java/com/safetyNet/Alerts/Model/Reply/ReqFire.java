@@ -10,6 +10,10 @@ import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
 import com.safetyNet.Alerts.Model.Reply.Sub.ReqFirePeople;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
+justification = "Ressources used as output in URI")
 public class ReqFire {
 	public final List<ReqFirePeople> people;
 	public final List<Integer> stationsNumer;

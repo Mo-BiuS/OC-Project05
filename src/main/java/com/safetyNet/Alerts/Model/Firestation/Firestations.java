@@ -71,6 +71,13 @@ public class Firestations {
 	public int hashCode() {
 		return firestations.hashCode();
 	}
+	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Firestations) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
 	
 	@Override
 	public String toString() {

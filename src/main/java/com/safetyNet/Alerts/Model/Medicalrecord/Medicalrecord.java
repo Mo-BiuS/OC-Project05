@@ -70,6 +70,13 @@ public class Medicalrecord {
 
 		return value;
 	}
+	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Medicalrecord) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
 	
 	public boolean compare(Medicalrecord medicalRecord) {
 		return this.getFirstName().equals(medicalRecord.getFirstName()) &&

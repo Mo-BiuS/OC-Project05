@@ -105,6 +105,13 @@ public class Persons {
 		return persons.hashCode();
 	}
 	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Persons) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
+	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
 		buf.append("Persons: [");

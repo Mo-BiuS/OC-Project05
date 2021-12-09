@@ -14,7 +14,7 @@ import com.safetyNet.Alerts.Model.Firestation.Firestations;
 import com.safetyNet.Alerts.Service.DataHandler;
 
 public class FirestationController {
-	private final Firestations firestations = DataHandler.DATA.getFirestations();
+	private final Firestations firestations = DataHandler.getData().getFirestations();
 	
 	@GetMapping("/firestation")
 	public Firestations findAllFirestation() {

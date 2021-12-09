@@ -33,6 +33,13 @@ public class Firestation {
 		
 		return value;
 	}
+	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Firestation) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
 
 	
 	public boolean compare(Firestation firestation) {

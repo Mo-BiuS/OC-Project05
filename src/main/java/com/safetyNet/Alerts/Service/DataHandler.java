@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetyNet.Alerts.Model.Data;
 
 public class DataHandler {
-    public static Data DATA = processData();
+    private static Data DATA = processData();
     
     private static Data processData() {
         Data DATA;
@@ -23,6 +23,10 @@ public class DataHandler {
             DATA = null;
         }
         return DATA;
+    }
+    
+    public static Data getData() {
+    	return DATA;
     }
     
     public static void reload() {

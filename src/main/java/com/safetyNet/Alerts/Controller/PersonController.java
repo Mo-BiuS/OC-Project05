@@ -17,7 +17,7 @@ import com.safetyNet.Alerts.Service.DataHandler;
 @RestController
 public class PersonController {
 	
-	private final Persons persons = DataHandler.DATA.getPersons();
+	private final Persons persons = DataHandler.getData().getPersons();
 	
 	@GetMapping("/person")
 	public Persons findAllPerson() {

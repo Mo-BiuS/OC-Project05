@@ -2,6 +2,10 @@ package com.safetyNet.Alerts.Model.Reply.Sub;
 
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
+justification = "Ressources used as output in URI")
 public class ReqChildAlertChild {
 	public final String firstName;
 	public final String lastName;

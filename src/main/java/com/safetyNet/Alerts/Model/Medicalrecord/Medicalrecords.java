@@ -117,6 +117,13 @@ public class Medicalrecords {
 		return medicalrecords.hashCode();
 	}
 	@Override
+	public boolean equals(Object o) {
+		return (o != null && 
+			   (o instanceof Medicalrecords) &&
+			   (o.hashCode() == this.hashCode()));
+		
+	}
+	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
 		buf.append("Medicalrecords: [");

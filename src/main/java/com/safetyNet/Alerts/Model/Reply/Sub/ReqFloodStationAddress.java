@@ -8,6 +8,10 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
 import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
+justification = "Ressources used as output in URI")
 public class ReqFloodStationAddress {
 	public final String address;
 	public final List<ReqFirePeople> people;
