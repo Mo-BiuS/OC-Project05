@@ -1,7 +1,6 @@
-package com.safetyNet.Alerts.Controller;
+package com.safetyNet.Alerts.Service;
 
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +16,11 @@ import com.safetyNet.Alerts.Model.Reply.Sub.ReqFirePeople;
 import com.safetyNet.Alerts.Model.Reply.Sub.ReqFirestationPerson;
 import com.safetyNet.Alerts.Model.Reply.Sub.ReqFloodStationAddress;
 
-public class AppControllerTest {
+public class RequestServiceTest {
 
-	AppController app = new AppController();
-	
 	@Test
 	public void firestationTest() {
-		ReqFirestation req = app.firestation(1);
+		ReqFirestation req = RequestService.firestation(1);
 		
 		assertTrue(req.childCount == 1);
 		assertTrue(req.adultCount == 5);
@@ -37,7 +34,7 @@ public class AppControllerTest {
 	
 	@Test
 	public void childAlertTest() {
-		ReqChildAlert req = app.childAlert("1509 Culver St");
+		ReqChildAlert req = RequestService.childAlert("1509 Culver St");
 		
 		assertTrue(req.adult.size() == 3);
 		assertTrue(req.child.size() == 2);
@@ -57,7 +54,7 @@ public class AppControllerTest {
 	
 	@Test
 	public void phoneAlertTest() {
-		ArrayList<String> req = (ArrayList<String>) app.phoneAlert(1);
+		ArrayList<String> req = (ArrayList<String>) RequestService.phoneAlert(1);
 		
 		assertTrue(req.size() == 6);
 		
@@ -70,7 +67,7 @@ public class AppControllerTest {
 	
 	@Test
 	public void fireTest() {
-		ReqFire req = app.fire("1509 Culver St");
+		ReqFire req = RequestService.fire("1509 Culver St");
 		
 		assertTrue(req.stationsNumber.size() == 1);
 		assertTrue(req.people.size() == 5);
@@ -93,7 +90,7 @@ public class AppControllerTest {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		list.add(2);
 		list.add(1);
-		ReqFloodStations req = app.reqFloodStations(list);
+		ReqFloodStations req = RequestService.reqFloodStations(list);
 		
 		assertTrue(req.address.size() == 6);
 		
@@ -115,7 +112,7 @@ public class AppControllerTest {
 	
 	@Test
 	public void personInfoTest() { 
-		ReqPersonInfo req = app.personInfo("Peter","Duncan");
+		ReqPersonInfo req = RequestService.personInfo("Peter","Duncan");
 		
 		assertTrue(req.peoples.size() == 1);
 		assertTrue(req.peoples.get(0).firstName.equals("Peter"));
@@ -124,7 +121,7 @@ public class AppControllerTest {
 	
 	@Test
 	public void communityEmailTest() { 
-		List<String> req = app.communityEmail("Culver");
+		List<String> req = RequestService.communityEmail("Culver");
 		
 		boolean emailA = false;
 		boolean emailB = false;
@@ -138,4 +135,5 @@ public class AppControllerTest {
 		assertTrue(emailB);
 		assertTrue(emailC);
 	}
+	
 }
