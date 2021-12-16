@@ -3,11 +3,15 @@ package com.safetyNet.Alerts.Model.Person;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Persons {
 
+	private static final Logger logger = LogManager.getLogger("Persons");
 	private List<Person> persons;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
@@ -20,6 +24,9 @@ public class Persons {
 	}
 	
 	public Persons getPersonByFirstName(String value){
+		
+		logger.info("getting by first name : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getFirstName()))list.add(persons.get(i));
@@ -27,6 +34,9 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByLastName(String value){
+		
+		logger.info("getting by last name : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getLastName()))list.add(persons.get(i));
@@ -34,6 +44,9 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByAdress(String value){
+		
+		logger.info("getting by address : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getAddress()))list.add(persons.get(i));
@@ -41,6 +54,9 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByCity(String value){
+		
+		logger.info("getting by city : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getCity()))list.add(persons.get(i));
@@ -48,6 +64,9 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByPhone(String value){
+		
+		logger.info("getting by phone : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getPhone()))list.add(persons.get(i));
@@ -55,6 +74,10 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByEmail(String value){
+		
+		logger.info("getting by email : "+value);
+		
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value.equals(persons.get(i).getEmail()))list.add(persons.get(i));
@@ -62,6 +85,9 @@ public class Persons {
 		return new Persons(list);
 	}
 	public Persons getPersonByZip(int value){
+		
+		logger.info("getting by zip : "+value);
+		
 		List<Person> list = new ArrayList<Person>();
 		for(int i = 0; i < persons.size(); i++) {
 			if(value == persons.get(i).getZip())list.add(persons.get(i));

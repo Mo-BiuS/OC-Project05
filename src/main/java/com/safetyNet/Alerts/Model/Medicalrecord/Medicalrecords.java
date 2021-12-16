@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Medicalrecords {
+	private static final Logger logger = LogManager.getLogger("Medicalrecords");
 	private  List<Medicalrecord> medicalrecords;
 
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
@@ -20,6 +24,9 @@ public class Medicalrecords {
 	}
 	
 	public Medicalrecords getMedicalrecordByFirstName(String value){
+		
+		logger.info("getting by first name : "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.equals(medicalrecords.get(i).getFirstName()))list.add(medicalrecords.get(i));
@@ -27,6 +34,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByLastName(String value){
+		
+		logger.info("getting by last name : "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.equals(medicalrecords.get(i).getLastName()))list.add(medicalrecords.get(i));
@@ -34,6 +44,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByBirthdayEqualTo(Date value){
+		
+		logger.info("getting by birthday = to "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() == medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
@@ -41,6 +54,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByBirthdayInferiorTo(Date value){
+		
+		logger.info("getting by birthday < to : "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() < medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
@@ -48,6 +64,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByBirthdaySuperiorTo(Date value){
+		
+		logger.info("getting by birthday > to "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			if(value.getTime() > medicalrecords.get(i).getBirthdate().getTime())list.add(medicalrecords.get(i));
@@ -55,6 +74,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByMedication(String value){
+		
+		logger.info("getting by medication : "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			for(int j = 0; j < medicalrecords.get(i).getMedications().size(); j++) 
@@ -68,6 +90,9 @@ public class Medicalrecords {
 		return new Medicalrecords(list);
 	}
 	public Medicalrecords getMedicalrecordByAllergies(String value){
+		
+		logger.info("getting by allergies : "+value);
+		
 		List<Medicalrecord> list = new ArrayList<Medicalrecord>();
 		for(int i = 0; i < medicalrecords.size(); i++) {
 			for(int j = 0; j < medicalrecords.get(i).getAllergies().size(); j++) 

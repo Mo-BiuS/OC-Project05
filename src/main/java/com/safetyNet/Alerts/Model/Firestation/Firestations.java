@@ -3,10 +3,14 @@ package com.safetyNet.Alerts.Model.Firestation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Firestations {
+	private static final Logger logger = LogManager.getLogger("firestations");
 	private  List<Firestation> firestations;
 	
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
@@ -19,6 +23,9 @@ public class Firestations {
 	}
 	
 	public Firestations getByAdress(String value){
+		
+		logger.info("getting by address : "+value);
+		
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value.equals(firestations.get(i).getAddress()))list.add(firestations.get(i));
@@ -27,6 +34,9 @@ public class Firestations {
 	}
 	
 	public Firestations getByStation(int value){
+		
+		logger.info("getting by station : "+value);
+		
 		List<Firestation> list = new ArrayList<Firestation>();
 		for(int i = 0; i < firestations.size(); i++) {
 			if(value == firestations.get(i).getStation())list.add(firestations.get(i));
