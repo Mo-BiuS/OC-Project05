@@ -2,6 +2,8 @@ package com.safetyNet.Alerts.Controller;
 
 import java.net.URISyntaxException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,30 +17,36 @@ import com.safetyNet.Alerts.Service.DataHandler;
 
 public class MedicalrecordController {
 	
-private final Medicalrecords medicalRecords = DataHandler.getData().getMedicalrecords();
+	private static final Logger logger = LogManager.getLogger("MedicalrecordController");
+	private final Medicalrecords medicalRecords = DataHandler.getData().getMedicalrecords();
 	
 	@GetMapping("/medicalRecord")
 	public Medicalrecords findAllMedicalrecords() {
+		logger.info("Requesting : /medicalRecord");
 		return medicalRecords;
 	}
 
 	@GetMapping("/medicalRecord/{firstName}/{lastName}")
 	public Medicalrecords findMedicalrecords(@PathVariable String firstName, @PathVariable String lastName) {
+		logger.info("Requesting : /medicalRecord/{firstName}/{lastName}");
 		return medicalRecords.getMedicalrecordByFirstName(firstName).getMedicalrecordByLastName(lastName);
 	}
 	
 	@PostMapping("/medicalRecord")
 	public boolean addMedicalrecords(@RequestBody Medicalrecord medicalRecord) throws URISyntaxException{
+		logger.info("Requesting : POST /medicalRecord");
 		return medicalRecords.add(medicalRecord);
 	}
 	
 	@PutMapping("/medicalRecord")
 	public boolean updateMedicalrecords(@RequestBody Medicalrecord medicalRecord) {
+		logger.info("Requesting : PUT /medicalRecord");
 		return medicalRecords.replace(medicalRecord);
 	}
 	
 	@DeleteMapping(path="/medicalRecord/{firstName}/{lastName}")
 	public boolean deleteMedicalrecords(@PathVariable String firstName, @PathVariable String lastName) {
-	    return medicalRecords.delete(new Medicalrecord(firstName, lastName, null, null, null));
+		logger.info("Requesting : DELETE /medicalRecord/{firstName}/{lastName}");
+		return medicalRecords.delete(new Medicalrecord(firstName, lastName, null, null, null));
 	}
 }
