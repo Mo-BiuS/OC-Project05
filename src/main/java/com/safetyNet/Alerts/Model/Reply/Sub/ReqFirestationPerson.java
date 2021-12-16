@@ -18,4 +18,9 @@ public class ReqFirestationPerson {
 		this.address = person.getAddress();
 		this.phone = person.getPhone();
 	}
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + " " + address + " " + phone;
+	}
 }

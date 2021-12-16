@@ -20,6 +20,8 @@ public final class Data {
 	public Data(@JsonProperty("persons") List<Person> persons, 
 					   @JsonProperty("firestations")List<Firestation> firestations, 
 					   @JsonProperty("medicalrecords") List<Medicalrecord> medicalrecords) {
+		
+		
 		this.persons = new Persons(persons);
 		this.firestations = new Firestations(firestations);
 		this.medicalrecords = new Medicalrecords(medicalrecords);

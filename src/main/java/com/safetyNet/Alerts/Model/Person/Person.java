@@ -1,5 +1,7 @@
 package com.safetyNet.Alerts.Model.Person;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,6 +15,8 @@ public class Person {
 	private  String email;
 	private  int zip;
 	
+
+	@Autowired
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Person(@JsonProperty("firstName") String firstName, 
 				  @JsonProperty("lastName") String lastName, 

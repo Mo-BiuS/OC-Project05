@@ -33,5 +33,10 @@ public class ReqPersonInfo {
 			}
 		}
 	}
-
+	@Override
+	public String toString() {
+		String s = "\nPeoples :\n";
+		for(ReqPersonInfoPeople i : peoples)s+=(i+"\n");
+		return s;
+	}
 }

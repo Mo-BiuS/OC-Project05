@@ -16,7 +16,7 @@ public class FirestationControllerTest {
 	
 	@BeforeEach
 	public void initPerTest() {
-		DataHandler.reload();
+		DataHandler.reloadFromJson();
 	}
 	
 	@Test

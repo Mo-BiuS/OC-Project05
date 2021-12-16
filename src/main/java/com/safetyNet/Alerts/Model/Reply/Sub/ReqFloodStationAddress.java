@@ -34,4 +34,13 @@ public class ReqFloodStationAddress {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		String s = "Address : " + address;
+		s+="\nPeople :\n";
+		for(ReqFirePeople i : people)s+=(i+"\n");
+		
+		return s;
+	}
 }

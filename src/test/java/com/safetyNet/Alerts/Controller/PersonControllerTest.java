@@ -17,7 +17,7 @@ public class PersonControllerTest {
 	
 	@BeforeEach
 	public void initPerTest() {
-		DataHandler.reload();
+		DataHandler.reloadFromJson();
 	}
 	
 	@Test

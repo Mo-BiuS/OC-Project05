@@ -22,4 +22,14 @@ public class ReqChildAlert {
 		this.adult = new ArrayList<ReqChildAlertAdult>();
 		adultList.getMedicalrecords().forEach(item -> this.adult.add(new ReqChildAlertAdult(item)));
 	}
+	
+	@Override
+	public String toString() {
+		String s = "\nChild :\n";
+		for(ReqChildAlertChild c : child)s+=(c+"\n");
+		s+="Adult :\n";
+		for(ReqChildAlertAdult a : adult)s+=(a+"\n");
+		
+		return s;
+	}
 }

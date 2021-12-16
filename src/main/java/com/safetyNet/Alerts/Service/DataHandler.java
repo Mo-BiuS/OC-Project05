@@ -29,7 +29,11 @@ public class DataHandler {
     	return DATA;
     }
     
-    public static void reload() {
+    public static void reloadFromJson() {
     	DATA = processData();
+    }
+    
+    public static void loadData(Data data) {
+    	DATA = data;
     }
 }

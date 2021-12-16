@@ -21,4 +21,13 @@ public class ReqFirestation {
 		this.adultCount = adultCount;
 		this.childCount = childCount;
 	}
+	
+	@Override
+	public String toString() {
+		String s = "\nPeople :\n";
+		for(ReqFirestationPerson i : persons)s+=(i+"\n");
+		s+="Adult count : "+adultCount+"\n";
+		s+="Child count : "+childCount+"\n";
+		return s;
+	}
 }

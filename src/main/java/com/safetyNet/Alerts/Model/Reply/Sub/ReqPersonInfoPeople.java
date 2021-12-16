@@ -25,5 +25,9 @@ public class ReqPersonInfoPeople {
 		medications = mr.getMedications();
 		allergies = mr.getAllergies();
 	}
-
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + " " + address + " " + age + " " + medications + " " + allergies;
+	}
 }

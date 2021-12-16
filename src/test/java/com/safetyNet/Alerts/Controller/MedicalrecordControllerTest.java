@@ -18,7 +18,7 @@ public class MedicalrecordControllerTest {
 	
 	@BeforeEach
 	public void initPerTest() {
-		DataHandler.reload();
+		DataHandler.reloadFromJson();
 	}
 	
 	@Test

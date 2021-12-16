@@ -16,10 +16,10 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 justification = "Ressources used as output in URI")
 public class ReqFire {
 	public final List<ReqFirePeople> people;
-	public final List<Integer> stationsNumer;
+	public final List<Integer> stationsNumber;
 	public ReqFire(Medicalrecords records, Persons peoples, Firestations stations) {
-		stationsNumer = new ArrayList<Integer>();
-		stations.getFirestations().forEach(item -> stationsNumer.add(item.getStation()));
+		stationsNumber = new ArrayList<Integer>();
+		stations.getFirestations().forEach(item -> stationsNumber.add(item.getStation()));
 		
 		people = new ArrayList<ReqFirePeople>();
 		for(int i = 0; i < records.getMedicalrecords().size(); i++) {
@@ -35,8 +35,16 @@ public class ReqFire {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String s = "\nPeople :\n";
+		for(ReqFirePeople i : people)s+=(i+"\n");
+		s+="Station number :\n";
+		for(Integer i : stationsNumber)s+=(i+"\n");
 		
-		
+		return s;
 	}
 
 }

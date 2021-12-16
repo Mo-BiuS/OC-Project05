@@ -25,4 +25,9 @@ public class ReqFirePeople {
 		this.medications = mr.getMedications();
 		this.allergies = mr.getAllergies();
 	}
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + " " + phone + " " + birthdate + " " + medications + " " + allergies;
+	}
 }

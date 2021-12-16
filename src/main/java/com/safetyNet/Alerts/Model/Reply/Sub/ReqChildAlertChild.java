@@ -16,4 +16,9 @@ public class ReqChildAlertChild {
 		this.lastName = medicalRecord.getLastName();
 		this.age = (long) (((System.currentTimeMillis()-medicalRecord.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
 	}
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + " " + age;
+	}
 }

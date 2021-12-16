@@ -14,4 +14,9 @@ public class ReqChildAlertAdult {
 		this.firstName = person.getFirstName();
 		this.lastName = person.getLastName();
 	}
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
+	}
 }

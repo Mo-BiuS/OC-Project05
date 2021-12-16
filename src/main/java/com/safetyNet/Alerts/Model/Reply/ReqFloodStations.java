@@ -23,4 +23,10 @@ public class ReqFloodStations {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		String s = "\nAddress :\n";
+		for(ReqFloodStationAddress i : address)s+=(i+"\n");
+		return s;
+	}
 }

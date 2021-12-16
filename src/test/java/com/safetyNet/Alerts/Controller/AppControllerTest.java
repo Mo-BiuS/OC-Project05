@@ -72,11 +72,11 @@ public class AppControllerTest {
 	public void fireTest() {
 		ReqFire req = app.fire("1509 Culver St");
 		
-		assertTrue(req.stationsNumer.size() == 1);
+		assertTrue(req.stationsNumber.size() == 1);
 		assertTrue(req.people.size() == 5);
 		
 		boolean station = false;
-		for(int p : req.stationsNumer) {
+		for(int p : req.stationsNumber) {
 			if(p == 3)station = true;
 		}
 		assertTrue(station);
