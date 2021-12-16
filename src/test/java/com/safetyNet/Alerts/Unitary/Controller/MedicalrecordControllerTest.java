@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Controller;
+package com.safetyNet.Alerts.Unitary.Controller;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.safetyNet.Alerts.Controller.MedicalrecordController;
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 import com.safetyNet.Alerts.Service.DataHandler;
 

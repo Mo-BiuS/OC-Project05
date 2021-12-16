@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model.Firestation;
+package com.safetyNet.Alerts.Unitary.Model.Firestation;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,11 +6,19 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.safetyNet.Alerts.Model.Firestation.Firestation;
+import com.safetyNet.Alerts.Model.Firestation.Firestations;
+
 public class FirestationsTest {
+	private static final Logger logger = LogManager.getLogger("FirestationsTest");
+	
+	
 	public static String adressA;
 	public static String adressB;
 	public static String adressC;
@@ -61,16 +69,20 @@ public class FirestationsTest {
 	
 	@Test
 	public void getByAdressTest() {
+		logger.info("[TESTING] Testing getByAdressTest :");
 		List<Firestation> l = new ArrayList<Firestation>();
 		l.add(firestationA);
 		assertTrue(l.hashCode() == firestations.getByAdress(adressA).hashCode());
+		logger.info("getByAdressTest result : "+new Firestations(l));
 	}
 	
 	@Test
 	public void getByStation() {
+		logger.info("[TESTING] Testing getByStation :");
 		List<Firestation> l = new ArrayList<Firestation>();
 		l.add(firestationA);
 		assertTrue(l.hashCode() == firestations.getByStation(stationA).hashCode());
+		logger.info("getByStation result : "+new Firestations(l));
 	}
 	
 	@Test

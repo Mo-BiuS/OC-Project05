@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model.MedicalRecord;
+package com.safetyNet.Alerts.Unitary.Model.MedicalRecord;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

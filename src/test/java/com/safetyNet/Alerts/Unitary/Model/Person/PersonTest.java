@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model.Person;
+package com.safetyNet.Alerts.Unitary.Model.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.safetyNet.Alerts.Model.Person.Person;
 
 public class PersonTest {
 

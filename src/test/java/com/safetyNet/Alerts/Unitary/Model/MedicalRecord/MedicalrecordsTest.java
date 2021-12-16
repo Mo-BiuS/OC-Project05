@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model.MedicalRecord;
+package com.safetyNet.Alerts.Unitary.Model.MedicalRecord;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,8 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
 
 public class MedicalrecordsTest {
+	private static final Logger logger = LogManager.getLogger("MedicalrecordsTest");
+	
 	public static String firstNameA;
 	public static String firstNameB;
 	public static String firstNameC;
@@ -96,54 +100,68 @@ public class MedicalrecordsTest {
 	
 	@Test
 	public void getMedicalrecordByFirstNameTest() {
+		logger.info("[TESTING] Testing getMedicalrecordByFirstNameTest :");
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestA);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByFirstName(firstNameA).hashCode());
+		logger.info("getMedicalrecordByFirstNameTest result : "+new Medicalrecords(l));
 	}
 	@Test
 	public void getMedicalrecordByLastName() {
+		logger.info("[TESTING] Testing getMedicalrecordByLastName :");
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestA);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByLastName(lastNameA).hashCode());
+		logger.info("getMedicalrecordByLastName result : "+new Medicalrecords(l));
 	}
 
 	@Test
 	public void getMedicalrecordByMedication() {
+		logger.info("[TESTING] Testing getMedicalrecordByMedication :");
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestA);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByMedication("aznol:350").hashCode());
+		logger.info("getMedicalrecordByMedication result : "+new Medicalrecords(l));
 	}
 	@Test
 	public void getMedicalrecordByAllergies() {
+		logger.info("[TESTING] Testing getMedicalrecordByAllergies :");
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestB);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByAllergies("ork").hashCode());
+		logger.info("getMedicalrecordByAllergies result : "+new Medicalrecords(l));
 	}
 	
 	@Test
 	public void getMedicalrecordByBirthdayEqualTo() throws ParseException {
+		logger.info("[TESTING] Testing getMedicalrecordByBirthdayEqualTo :");
 		Date date = new SimpleDateFormat("dd/MM/yyyy").parse("20/05/1995");
 
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestB);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByBirthdayEqualTo(date).hashCode());
+		logger.info("getMedicalrecordByBirthdayEqualTo result : "+new Medicalrecords(l));
 	}
 	@Test
 	public void getMedicalrecordByBirthdayInferiorTo() throws ParseException {
+		logger.info("[TESTING] Testing getMedicalrecordByBirthdayInferiorTo :");
 		Date date = new SimpleDateFormat("dd/MM/yyyy").parse("20/05/1996");
 
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestA);
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByBirthdayInferiorTo(date).hashCode());
+		logger.info("getMedicalrecordByBirthdayInferiorTo result : "+new Medicalrecords(l));
 	}
 	@Test
 	public void getMedicalrecordByBirthdaySuperiorTo() throws ParseException {
+		logger.info("[TESTING] Testing getMedicalrecordByBirthdaySuperiorTo :");
 		Date date = new SimpleDateFormat("dd/MM/yyyy").parse("20/05/1996");
 
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestB);
 		
 		assertTrue(l.hashCode() == medicalRecords.getMedicalrecordByBirthdaySuperiorTo(date).hashCode());
+		logger.info("getMedicalrecordByBirthdaySuperiorTo result : "+new Medicalrecords(l));
 	}
 	
 	@Test

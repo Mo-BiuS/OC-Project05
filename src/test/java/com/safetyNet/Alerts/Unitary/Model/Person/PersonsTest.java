@@ -1,4 +1,4 @@
-package com.safetyNet.Alerts.Model.Person;
+package com.safetyNet.Alerts.Unitary.Model.Person;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,11 +6,18 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.safetyNet.Alerts.Model.Person.Person;
+import com.safetyNet.Alerts.Model.Person.Persons;
+
 public class PersonsTest {
+	private static final Logger logger = LogManager.getLogger("PersonsTest");
+	
 	public static String firstNameA;
 	public static String firstNameB;
 	public static String firstNameC;
@@ -101,45 +108,59 @@ public class PersonsTest {
 
 	@Test
 	public void getPersonByFirstName(){
+		logger.info("[TESTING] Testing getPersonByFirstName :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByFirstName(firstNameA).hashCode());
+		logger.info("getPersonByFirstName result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByLastName(){
+		logger.info("[TESTING] Testing getPersonByLastName :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByLastName(lastNameA).hashCode());
+		logger.info("getPersonByLastName result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByAdress(){
+		logger.info("[TESTING] Testing getPersonByAdress :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByAdress(adressA).hashCode());
+		logger.info("getPersonByAdress result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByCity(){
+		logger.info("[TESTING] Testing getPersonByCity :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByCity(cityA).hashCode());
+		logger.info("getPersonByCity result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByPhone(){
+		logger.info("[TESTING] Testing getPersonByPhone :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByPhone(phoneA).hashCode());
+		logger.info("getPersonByPhone result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByEmail(){
+		logger.info("[TESTING] Testing getPersonByEmail :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByEmail(emailA).hashCode());
+		logger.info("getPersonByEmail result : "+new Persons(l));
 	}
 	@Test
 	public void getPersonByZip(){
+		logger.info("[TESTING] Testing getPersonByZip :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		assertTrue(l.hashCode() == persons.getPersonByZip(zipA).hashCode());
+		logger.info("getPersonByZip result : "+new Persons(l));
 	}
 	
 
