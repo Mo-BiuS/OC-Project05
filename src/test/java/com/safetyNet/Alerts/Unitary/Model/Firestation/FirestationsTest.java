@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.safetyNet.Alerts.Model.Firestation.Firestation;
 import com.safetyNet.Alerts.Model.Firestation.Firestations;
@@ -34,21 +35,23 @@ public class FirestationsTest {
 	
 	@BeforeAll
 	public static void initBeforeAll() {
-		adressA = "a";
-		adressB = "b";
-		adressC = "c";
+		firestationA = Mockito.mock(Firestation.class);
+		firestationB = Mockito.mock(Firestation.class);
+		firestationC = Mockito.mock(Firestation.class);
 		
-		stationA = 1;
-		stationB = 2;
-		stationC = 3;
+		Mockito.when(firestationA.getStation()).thenReturn(stationA =1);
+		Mockito.when(firestationB.getStation()).thenReturn(stationB =2);
+		Mockito.when(firestationC.getStation()).thenReturn(stationC =3);
+		
+		Mockito.when(firestationA.getAddress()).thenReturn(adressA ="a");
+		Mockito.when(firestationB.getAddress()).thenReturn(adressB ="b");
+		Mockito.when(firestationC.getAddress()).thenReturn(adressC ="c");
+		
+		Mockito.when(firestationA.compare(firestationA)).thenReturn(true);
 	}
 	
 	@BeforeEach
 	public void initBeforeEach() {
-		firestationA = new Firestation(adressA, stationA);
-		firestationB = new Firestation(adressB, stationB);
-		firestationC = new Firestation(adressC, stationC);
-		
 		List<Firestation> l = new ArrayList<Firestation>();
 		l.add(firestationA);
 		l.add(firestationB);

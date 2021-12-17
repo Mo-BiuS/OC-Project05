@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
@@ -47,18 +48,22 @@ public class MedicalrecordsTest {
 	public static Medicalrecords medicalRecords;
 	
 	@BeforeAll
-	public static void initBeforeAll() throws ParseException {
-		firstNameA = "a";
-		firstNameB = "b";
-		firstNameC = "c";
+	public static void initBeforeAll() throws ParseException {		
+		medicalRecordTestA = Mockito.mock(Medicalrecord.class);
+		medicalRecordTestB = Mockito.mock(Medicalrecord.class);
+		medicalRecordTestC = Mockito.mock(Medicalrecord.class);
 		
-		lastNameA = "A";
-		lastNameB = "B";
-		lastNameC = "C";
+		Mockito.when(medicalRecordTestA.getFirstName()).thenReturn(firstNameA ="a");
+		Mockito.when(medicalRecordTestB.getFirstName()).thenReturn(firstNameB ="b");
+		Mockito.when(medicalRecordTestC.getFirstName()).thenReturn(firstNameC ="c");
 		
-		birthdateA = new SimpleDateFormat("dd/MM/yyyy").parse("19/01/2000");
-		birthdateB = new SimpleDateFormat("dd/MM/yyyy").parse("20/05/1995");
-		birthdateC = new SimpleDateFormat("dd/MM/yyyy").parse("22/01/1990");
+		Mockito.when(medicalRecordTestA.getLastName()).thenReturn(lastNameA ="A");
+		Mockito.when(medicalRecordTestB.getLastName()).thenReturn(lastNameB ="B");
+		Mockito.when(medicalRecordTestC.getLastName()).thenReturn(lastNameC ="C");
+		
+		Mockito.when(medicalRecordTestA.getBirthdate()).thenReturn(birthdateA = new SimpleDateFormat("dd/MM/yyyy").parse("19/01/2000"));
+		Mockito.when(medicalRecordTestB.getBirthdate()).thenReturn(birthdateB = new SimpleDateFormat("dd/MM/yyyy").parse("20/05/1995"));
+		Mockito.when(medicalRecordTestC.getBirthdate()).thenReturn(birthdateC = new SimpleDateFormat("dd/MM/yyyy").parse("22/01/1990"));
 		
 		medicationsA = new ArrayList<String>();
 		medicationsA.add("aznol:350");
@@ -72,14 +77,20 @@ public class MedicalrecordsTest {
 		allergiesB.add("ork");
 		allergiesC = new ArrayList<String>();
 		allergiesC.add("peanut");
+		
+		Mockito.when(medicalRecordTestA.getMedications()).thenReturn(medicationsA);
+		Mockito.when(medicalRecordTestB.getMedications()).thenReturn(medicationsB);
+		Mockito.when(medicalRecordTestC.getMedications()).thenReturn(medicationsC);
+		
+		Mockito.when(medicalRecordTestA.getAllergies()).thenReturn(allergiesA);
+		Mockito.when(medicalRecordTestB.getAllergies()).thenReturn(allergiesB);
+		Mockito.when(medicalRecordTestC.getAllergies()).thenReturn(allergiesC);
+		
+		Mockito.when(medicalRecordTestA.compare(medicalRecordTestA)).thenReturn(true);
 	}
 	
 	@BeforeEach
 	public void initBeforeEach() {
-		medicalRecordTestA = new Medicalrecord(firstNameA, lastNameA, birthdateA , medicationsA, allergiesA);
-		medicalRecordTestB = new Medicalrecord(firstNameB, lastNameB, birthdateB , medicationsB, allergiesB);
-		medicalRecordTestC = new Medicalrecord(firstNameC, lastNameC, birthdateC , medicationsC, allergiesC);
-		
 		List<Medicalrecord> l = new ArrayList<Medicalrecord>();
 		l.add(medicalRecordTestA);
 		l.add(medicalRecordTestB);

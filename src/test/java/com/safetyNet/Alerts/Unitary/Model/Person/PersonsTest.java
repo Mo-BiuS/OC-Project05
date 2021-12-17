@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
@@ -30,9 +31,7 @@ public class PersonsTest {
 	public static String adressB;
 	public static String adressC;
 	
-	public static String cityA;
-	public static String cityB;
-	public static String cityC;
+	public static String city;
 	
 	public static String phoneA;
 	public static String phoneB;
@@ -53,41 +52,43 @@ public class PersonsTest {
 	
 	@BeforeAll
 	public static void initBeforeAll() {
-		firstNameA = "a";
-		firstNameB = "b";
-		firstNameB = "c";
+		personA = Mockito.mock(Person.class);
+		personB = Mockito.mock(Person.class);
+		personC = Mockito.mock(Person.class);
 		
-		lastNameA = "A";
-		lastNameB = "B";
-		lastNameB = "C";
+		Mockito.when(personA.getFirstName()).thenReturn(firstNameA = "a");
+		Mockito.when(personB.getFirstName()).thenReturn(firstNameB = "b");
+		Mockito.when(personC.getFirstName()).thenReturn(firstNameB = "c");
 		
-		adressA = "1A";
-		adressB = "2B";
-		adressB = "2C";
+		Mockito.when(personA.getLastName()).thenReturn(lastNameA = "A");
+		Mockito.when(personB.getLastName()).thenReturn(lastNameB = "B");
+		Mockito.when(personC.getLastName()).thenReturn(lastNameB = "C");
 		
-		cityA = "cA";
-		cityB = "cB";
-		cityB = "cC";
+		Mockito.when(personA.getAddress()).thenReturn(adressA = "1A");
+		Mockito.when(personB.getAddress()).thenReturn(adressB = "2B");
+		Mockito.when(personC.getAddress()).thenReturn(adressC = "2C");
 		
-		phoneA = "06";
-		phoneB = "07";
-		phoneB = "08";
+		Mockito.when(personA.getCity()).thenReturn(city = "c");
+		Mockito.when(personB.getCity()).thenReturn(city);
+		Mockito.when(personC.getCity()).thenReturn(city);
 		
-		emailA = "A@A";
-		emailB = "B@B";
-		emailB = "C@C";
+		Mockito.when(personA.getPhone()).thenReturn(phoneA = "06");
+		Mockito.when(personB.getPhone()).thenReturn(phoneB = "07");
+		Mockito.when(personC.getPhone()).thenReturn(phoneB = "08");
 		
-		zipA = 1;
-		zipB = 2;
-		zipB = 3;
+		Mockito.when(personA.getEmail()).thenReturn(emailA = "A@A");
+		Mockito.when(personB.getEmail()).thenReturn(emailB = "B@B");
+		Mockito.when(personC.getEmail()).thenReturn(emailB = "C@C");
+		
+		Mockito.when(personA.getZip()).thenReturn((int) (zipA = 1));
+		Mockito.when(personB.getZip()).thenReturn((int) (zipB = 2));
+		Mockito.when(personC.getZip()).thenReturn((int) (zipB = 3));
+		
+		Mockito.when(personA.compare(personA)).thenReturn(true);
 	}
 	
 	@BeforeEach
 	public void initBeforeEach() {
-		personA = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);
-		personB = new Person(firstNameB, lastNameB, adressB, cityB, zipB, phoneB, emailB);
-		personC = new Person(firstNameC, lastNameC, adressC, cityC, zipC, phoneC, emailC);
-		
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
 		l.add(personB);
@@ -135,7 +136,8 @@ public class PersonsTest {
 		logger.info("[TESTING] Testing getPersonByCity :");
 		List<Person> l = new ArrayList<Person>();
 		l.add(personA);
-		assertTrue(l.hashCode() == persons.getPersonByCity(cityA).hashCode());
+		l.add(personB);
+		assertTrue(l.hashCode() == persons.getPersonByCity(city).hashCode());
 		logger.info("getPersonByCity result : "+new Persons(l));
 	}
 	@Test
