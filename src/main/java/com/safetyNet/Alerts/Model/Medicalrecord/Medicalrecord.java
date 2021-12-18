@@ -48,6 +48,22 @@ public class Medicalrecord {
 		return (long) (((System.currentTimeMillis()-this.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
 	}
 	
+	public void setFirstName(String f) {
+		firstName = f;
+	}
+	public void setLastName(String l) {
+		lastName = l;
+	}
+	public void setBirthdate(Date b) {
+		if(b != null) birthdate = (Date) b.clone();
+	}
+	public void setMedications(ArrayList<String> m) {
+		medications = m;
+	}
+	public void setAllergies(ArrayList<String> a) {
+		allergies = a;
+	}
+	
 	@Override
 	public int hashCode() {
 		

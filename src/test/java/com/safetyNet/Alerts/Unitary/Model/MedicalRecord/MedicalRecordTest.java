@@ -88,6 +88,38 @@ public class MedicalRecordTest {
 			assertEquals(allergiesA.get(i), medicalRecordTestA.getAllergies().get(i));
 		}
 	}
+	
+	@Test
+	public void medicalRecordSetFirstName() {
+		medicalRecordTestA.setFirstName(firstNameB);
+		assertEquals(firstNameB, medicalRecordTestA.getFirstName());
+	}
+	@Test
+	public void medicalRecordSetLastName() {
+		medicalRecordTestA.setLastName(lastNameB);
+		assertEquals(lastNameB, medicalRecordTestA.getLastName());
+	}
+	@Test
+	public void medicalRecordSetBirthdate() {
+		medicalRecordTestA.setBirthdate(birthdateB);
+		assertEquals(birthdateB, medicalRecordTestA.getBirthdate());
+	}
+	@Test
+	public void medicalRecordSetMedications() {
+		medicalRecordTestA.setMedications(medicationsB);
+		assertEquals(medicationsB.size(), medicalRecordTestA.getMedications().size());
+		for(int i = 0; i < medicationsB.size(); i++) {
+			assertEquals(medicationsB.get(i), medicalRecordTestA.getMedications().get(i));
+		}
+	}
+	@Test
+	public void medicalRecordSetAllergies() {
+		medicalRecordTestA.setAllergies(allergiesB);
+		assertEquals(allergiesB.size(), medicalRecordTestA.getAllergies().size());
+		for(int i = 0; i < allergiesB.size(); i++) {
+			assertEquals(allergiesB.get(i), medicalRecordTestA.getAllergies().get(i));
+		}
+	}
 
 	@Test
 	public void hashTest() {

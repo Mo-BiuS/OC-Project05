@@ -59,7 +59,12 @@ public class Firestations {
 	}
 	
 	public boolean replace(Firestation firestation) {
-		return this.delete(firestation) && this.add(firestation);
+		for(Firestation p : firestations)
+			if(p.compare(firestation)) {
+				p.setStation(firestation.getStation());
+				return true;
+			}
+		return false;
 	}
 	public boolean delete(Firestation firestation) {
 		for(Firestation p : firestations)

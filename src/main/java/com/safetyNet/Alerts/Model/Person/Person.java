@@ -56,7 +56,27 @@ public class Person {
 		return zip;
 	}
 	
-	
+	public void setFirstName(String f) {
+		firstName=f;
+	}
+	public void setLastName(String l) {
+		lastName=l;
+	}
+	public void setAddress(String a) {
+		address=a;
+	}
+	public void setCity(String c) {
+		city=c;
+	}
+	public void setPhone(String p) {
+		phone=p;
+	}
+	public void setEmail(String e) {
+		email=e;
+	}
+	public void setZip(int z) {
+		zip=z;
+	}
 	
 	@Override
 	public int hashCode() {

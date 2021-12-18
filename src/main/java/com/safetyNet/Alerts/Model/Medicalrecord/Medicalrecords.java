@@ -120,7 +120,14 @@ public class Medicalrecords {
 		return false;
 	}
 	public boolean replace(Medicalrecord medicalrecord) {
-		return this.delete(medicalrecord) && this.add(medicalrecord);
+		for(Medicalrecord p : medicalrecords)
+			if(p.compare(medicalrecord)) {
+				p.setAllergies(medicalrecord.getAllergies());
+				p.setBirthdate(medicalrecord.getBirthdate());
+				p.setMedications(medicalrecord.getMedications());
+				return true;
+			}
+		return false;
 	}
 	public boolean delete(Medicalrecord medicalrecord) {
 		for(Medicalrecord p : medicalrecords)

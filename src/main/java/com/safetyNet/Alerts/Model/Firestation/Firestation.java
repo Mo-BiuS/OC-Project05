@@ -21,6 +21,13 @@ public class Firestation {
 		return station;
 	}
 	
+	public void setAddress(String a) {
+		address = a;
+	}
+	public void setStation(int s) {
+		station = s;
+	}
+	
 	@Override
 	public int hashCode() {
 		int value = 1;

@@ -109,7 +109,16 @@ public class Persons {
 		return false;
 	}
 	public boolean replace(Person person) {
-		return this.delete(person) && this.add(person);
+		for(Person p : persons)
+			if(p.compare(person)) {
+				p.setAddress(person.getAddress());
+				p.setCity(person.getCity());
+				p.setEmail(person.getEmail());
+				p.setPhone(person.getPhone());
+				p.setZip(person.getZip());
+				return true;
+			}
+		return false;
 	}
 	public boolean delete(Person person) {
 		for(Person p : persons)

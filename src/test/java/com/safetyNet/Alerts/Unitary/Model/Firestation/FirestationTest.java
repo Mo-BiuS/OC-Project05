@@ -46,6 +46,18 @@ public class FirestationTest {
 		assertEquals(stationA, firestationA.getStation());
 	}
 	
+	@Test
+	public void firestationSetAdress() {
+		firestationA.setAddress(adressB);
+		assertEquals(adressB, firestationA.getAddress());
+	}
+	@Test
+	public void firestationSetStation() {
+
+		firestationA.setStation(stationB);
+		assertEquals(stationB, firestationA.getStation());
+	}
+	
 
 	@Test
 	public void hashTest() {

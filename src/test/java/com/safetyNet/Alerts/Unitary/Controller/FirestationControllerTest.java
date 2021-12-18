@@ -71,7 +71,6 @@ public class FirestationControllerTest {
 		assertTrue(firestations.contains(firestationA));
 		assertTrue(firestations.contains(firestationB));
 	}
-	
 	@Test
 	public void findFirestation() {
 		logger.info("[TESTING] Testing findFirestation :");

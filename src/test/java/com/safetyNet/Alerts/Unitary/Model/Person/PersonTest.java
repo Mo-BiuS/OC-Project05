@@ -97,6 +97,42 @@ public class PersonTest {
 	}
 	
 	@Test
+	public void personSetFirstName() {
+		personA.setFirstName(firstNameB);
+		assertEquals(firstNameB, personA.getFirstName());
+	}
+	@Test
+	public void personSetLastName() {
+		personA.setLastName(lastNameB);
+		assertEquals(lastNameB, personA.getLastName());
+	}
+	@Test
+	public void personSetAdress() {
+		personA.setAddress(adressB);
+		assertEquals(adressB, personA.getAddress());
+	}
+	@Test
+	public void personSetCity() {
+		personA.setCity(cityB);
+		assertEquals(cityB, personA.getCity());
+	}
+	@Test
+	public void personSetZip() {
+		personA.setZip(zipB);
+		assertEquals(zipB, personA.getZip());
+	}
+	@Test
+	public void personSetPhone() {
+		personA.setPhone(phoneB);
+		assertEquals(phoneB, personA.getPhone());
+	}
+	@Test
+	public void personSetEmail() {
+		personA.setEmail(emailB);
+		assertEquals(emailB, personA.getEmail());
+	}
+	
+	@Test
 	public void hashTest() {
 		assertTrue(personA.hashCode() != personB.hashCode());
 		personB = new Person(firstNameA, lastNameA, adressA, cityA, zipA, phoneA, emailA);
