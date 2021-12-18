@@ -46,7 +46,7 @@ public class FirestationController {
 	
 	@DeleteMapping(path="/firestation/{address}")
 	public boolean deleteFirestation(@PathVariable String address) {
-		logger.info("Requesting : DELETE /firestation/{address}");
+		logger.info("Requesting : DELETE /firestation/"+address);
 	    return firestations.delete(new Firestation(address, 0));
 	}
 }

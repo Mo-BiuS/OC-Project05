@@ -27,12 +27,11 @@ public final class Data {
 					   @JsonProperty("firestations")List<Firestation> firestations, 
 					   @JsonProperty("medicalrecords") List<Medicalrecord> medicalrecords) {
 		
-		
-		logger.info("Loading new dataset : "+persons.size()+" persons / "+firestations.size()+" firestations / "+medicalrecords.size()+" medicalRecords");
-		
 		this.persons = new Persons(persons);
 		this.firestations = new Firestations(firestations);
 		this.medicalrecords = new Medicalrecords(medicalrecords);
+		
+		logger.info("Loading new dataset : "+persons.size()+" persons / "+firestations.size()+" firestations / "+medicalrecords.size()+" medicalRecords");
 	}
 
 	public Persons getPersons() {
