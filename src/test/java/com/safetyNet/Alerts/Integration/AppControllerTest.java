@@ -106,7 +106,7 @@ public class AppControllerTest {
 		medicalRecordTestC = new Medicalrecord(firstNameC = "c", lastNameC = "C", birthdateC, medicationsC, allergiesC);
 		
 		personA = new Person(firstNameA, lastNameA, adressAB = "1A", city = "city", zipAB = 1, phoneA = "06", emailA = "a@a");
-		personB = new Person(firstNameB, lastNameB, adressAB = "1A", city, zipAB = 1, phoneB = "07", emailB = "b@b");
+		personB = new Person(firstNameB, lastNameB, adressAB, city, zipAB = 1, phoneB = "07", emailB = "b@b");
 		personC = new Person(firstNameC, lastNameC, adressC = "1B", city, zipC = 2, phoneC = "08", emailC = "c@c");
 		
 		firestationA = new Firestation(adressAB, stationA = 1);

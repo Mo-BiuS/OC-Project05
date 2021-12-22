@@ -27,9 +27,9 @@ public class AppController {
 //	doit inclure les informations spécifiques suivantes : prénom, nom, adresse, numéro de téléphone. De plus, 
 //	elle doit fournir un décompte du nombre d'adultes et du nombre d'enfants (tout individu âgé de 18 ans ou 
 //	moins) dans la zone desservie.
-	@RequestMapping("/firestation")
+	@RequestMapping(value = "/firestation", params = "stationNumber")
 	@ResponseBody
-	public ReqFirestation firestation(int stationNumber) { 
+	public ReqFirestation firestation(@RequestParam("stationNumber") int stationNumber) { 
 		logger.info("Requesting : /firestation?stationNumber="+stationNumber);
 		ReqFirestation req = RequestService.firestation(stationNumber);
 		logger.info("Returning : "+req);
