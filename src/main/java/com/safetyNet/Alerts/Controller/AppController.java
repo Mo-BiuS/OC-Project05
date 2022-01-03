@@ -17,16 +17,27 @@ import com.safetyNet.Alerts.Model.Reply.ReqFloodStations;
 import com.safetyNet.Alerts.Model.Reply.ReqPersonInfo;
 import com.safetyNet.Alerts.Service.RequestService;
 
+/** 
+ * class containing all the main mapping of the specification
+ * @author Mo-Bius
+ */
 @RestController
 public class AppController {
 	
 	private static final Logger logger = LogManager.getLogger("AppController");
 	
-//	Cette url doit retourner une liste des personnes couvertes par la caserne de pompiers correspondante. 
-//	Donc, si le numéro de station = 1, elle doit renvoyer les habitants couverts par la station numéro 1. La liste 
-//	doit inclure les informations spécifiques suivantes : prénom, nom, adresse, numéro de téléphone. De plus, 
-//	elle doit fournir un décompte du nombre d'adultes et du nombre d'enfants (tout individu âgé de 18 ans ou 
-//	moins) dans la zone desservie.
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner une liste des personnes couvertes par la caserne de pompiers correspondante. 
+	 * Donc, si le numéro de station = 1, elle doit renvoyer les habitants couverts par la station numéro 1. La liste 
+	 * doit inclure les informations spécifiques suivantes : prénom, nom, adresse, numéro de téléphone. De plus, 
+	 * elle doit fournir un décompte du nombre d'adultes et du nombre d'enfants (tout individu âgé de 18 ans ou 
+	 * moins) dans la zone desservie.
+	 * 
+	 * @param stationNumber
+	 * @return ReqFirestation, a structured answer in a class
+	 */
 	@RequestMapping(value = "/firestation", params = "stationNumber")
 	@ResponseBody
 	public ReqFirestation firestation(@RequestParam("stationNumber") int stationNumber) { 
@@ -36,9 +47,16 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner une liste d'enfants (tout individu âgé de 18 ans ou moins) habitant à cette adresse. 
-//	La liste doit comprendre le prénom et le nom de famille de chaque enfant, son âge et une liste des autres 
-//	membres du foyer. S'il n'y a pas d'enfant, cette url peut renvoyer une chaîne vide
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner une liste d'enfants (tout individu âgé de 18 ans ou moins) habitant à cette adresse. 
+	 * La liste doit comprendre le prénom et le nom de famille de chaque enfant, son âge et une liste des autres 
+	 * membres du foyer. S'il n'y a pas d'enfant, cette url peut renvoyer une chaîne vide
+	 * 
+	 * @param address
+	 * @return ReqChildAlert, a structured answer in a class
+	 */
 	@RequestMapping("/childAlert")
 	@ResponseBody
 	public ReqChildAlert childAlert(String address) {
@@ -48,8 +66,15 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner une liste des numéros de téléphone des résidents desservis par la caserne de 
-//	pompiers. Nous l'utiliserons pour envoyer des messages texte d'urgence à des foyers spécifiques. 
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * ette url doit retourner une liste des numéros de téléphone des résidents desservis par la caserne de 
+	 * pompiers. Nous l'utiliserons pour envoyer des messages texte d'urgence à des foyers spécifiques. 
+	 * 
+	 * @param stationNumber
+	 * @return List<String>
+	 */
 	@RequestMapping("/phoneAlert")
 	@ResponseBody
 	public List<String> phoneAlert(int stationNumber) { 
@@ -59,9 +84,16 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner la liste des habitants vivant à l’adresse donnée ainsi que le numéro de la caserne 
-//	de pompiers la desservant. La liste doit inclure le nom, le numéro de téléphone, l'âge et les antécédents 
-//	médicaux (médicaments, posologie et allergies) de chaque personne. 
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner la liste des habitants vivant à l’adresse donnée ainsi que le numéro de la caserne 
+	 * de pompiers la desservant. La liste doit inclure le nom, le numéro de téléphone, l'âge et les antécédents 
+	 * médicaux (médicaments, posologie et allergies) de chaque personne. 
+	 * 
+	 * @param address
+	 * @return ReqFire, a structured answer in a class
+	 */
 	@RequestMapping("/fire")
 	@ResponseBody
 	public ReqFire fire(String address) { 
@@ -71,9 +103,18 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner une liste de tous les foyers desservis par la caserne. Cette liste doit regrouper les 
-//	personnes par adresse. Elle doit aussi inclure le nom, le numéro de téléphone et l'âge des habitants, et 
-//	faire figurer leurs antécédents médicaux (médicaments, posologie et allergies) à côté de chaque nom. 
+
+	
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner une liste de tous les foyers desservis par la caserne. Cette liste doit regrouper les 
+	 * personnes par adresse. Elle doit aussi inclure le nom, le numéro de téléphone et l'âge des habitants, et 
+	 * faire figurer leurs antécédents médicaux (médicaments, posologie et allergies) à côté de chaque nom. 
+	 * 
+	 * @param stations
+	 * @return ReqFloodStations, a structured answer in a class
+	 */
 	@RequestMapping("/flood/stations/{stations}")
 	@ResponseBody
 	public ReqFloodStations reqFloodStations(@PathVariable List<Integer> stations) { 
@@ -83,9 +124,19 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner le nom, l'adresse, l'âge, l'adresse mail et les antécédents médicaux (médicaments, 
-//	posologie, allergies) de chaque habitant. Si plusieurs personnes portent le même nom, elles doivent 
-//	toutes apparaître. 
+
+	
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner le nom, l'adresse, l'âge, l'adresse mail et les antécédents médicaux (médicaments, 
+	 * posologie, allergies) de chaque habitant. Si plusieurs personnes portent le même nom, elles doivent 
+	 * toutes apparaître. 
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @return ReqPersonInfo, a structured answer in a class
+	 */
 	@RequestMapping("/personInfo")
 	@ResponseBody
 	public ReqPersonInfo personInfo(String firstName, String lastName) {
@@ -95,7 +146,14 @@ public class AppController {
 	    return req;
 	}
 	
-//	Cette url doit retourner les adresses mail de tous les habitants de la ville.
+	/**
+	 * The specifications describe this mapping as follow :
+	 * 
+	 * Cette url doit retourner les adresses mail de tous les habitants de la ville.
+	 * 
+	 * @param city
+	 * @return List<String>
+	 */
 	@RequestMapping("/communityEmail")
 	@ResponseBody
 	public List<String> communityEmail(@RequestParam(required = true) String city) {
