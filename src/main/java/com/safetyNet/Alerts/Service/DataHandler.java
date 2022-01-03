@@ -10,11 +10,27 @@ import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetyNet.Alerts.Model.Data;
 
+/** 
+ * Class handling data loading and data feeding of the program.
+ * This class can be access from anywhere in the program.
+ * It does not handle saving as it wasn't in the specifications
+ * @author Mo-Bius
+ */
 public class DataHandler {
 
 	private static final Logger logger = LogManager.getLogger("DataHandler");
     private static Data DATA = processData();
     
+    //=======================================[getters]=======================================
+    public static Data getData() {
+    	return DATA;
+    }
+
+	//=======================================[Functions]=======================================
+    /**
+     * Will load the data from the json at ./src/main/resources/data.json
+     * @return Data, a new dataset
+     */
     private static Data processData() {
     	
     	logger.info("Loading data.json : ");
@@ -35,14 +51,17 @@ public class DataHandler {
         return DATA;
     }
     
-    public static Data getData() {
-    	return DATA;
-    }
-    
+    /**
+     * Reload the data from the json
+     */
     public static void reloadFromJson() {
     	DATA = processData();
     }
     
+    /**
+     * Force the program to function with a specified set of data
+     * @param data
+     */
     public static void loadData(Data data) {
     	logger.info("FORCE FEEDING DATA");
     	DATA = data;

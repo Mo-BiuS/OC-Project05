@@ -103,8 +103,6 @@ public class AppController {
 	    return req;
 	}
 	
-
-	
 	/**
 	 * The specifications describe this mapping as follow :
 	 * 
@@ -123,8 +121,6 @@ public class AppController {
 		logger.info("Returning : "+req);
 	    return req;
 	}
-	
-
 	
 	/**
 	 * The specifications describe this mapping as follow :
