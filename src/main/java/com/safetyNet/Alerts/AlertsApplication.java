@@ -4,6 +4,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Class containing the main. This bad boy lunch the whole app in one single line! ;D
+ * @author Mo-Bius
+ *
+ */
 @SpringBootApplication
 public class AlertsApplication implements CommandLineRunner{
 	
