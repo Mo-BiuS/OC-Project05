@@ -9,19 +9,34 @@ import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/** 
+ * Represents a group of firestation from the data model.
+ * @author Mo-Bius
+ */
 public class Firestations {
 	private static final Logger logger = LogManager.getLogger("firestations");
 	private  List<Firestation> firestations;
 	
+	//=======================================[Constructor]=======================================
+	/**
+	 * Class constructor.
+	 * @param firestations List<Firestation>
+	 */
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Firestations(@JsonProperty("firestations") List<Firestation> firestations) {
 		this.firestations = firestations;
 	}
 	
+	//=======================================[getters]=======================================
 	public List<Firestation> getFirestations() {
 		return firestations;
 	}
 	
+	/**
+	 * Getting all entity with the same address
+	 * @param value, string representing an address
+	 * @return Firestations, a sub list.
+	 */
 	public Firestations getByAdress(String value){
 		
 		logger.info("getting by address : "+value);
@@ -33,6 +48,11 @@ public class Firestations {
 		return new Firestations(list);
 	}
 	
+	/**
+	 * Getting all entity with the same station number
+	 * @param value, int representing a station number
+	 * @return Firestations, a sub list.
+	 */
 	public Firestations getByStation(int value){
 		
 		logger.info("getting by station : "+value);
@@ -44,6 +64,12 @@ public class Firestations {
 		return new Firestations(list);
 	}
 
+	//=======================================[Functions]=======================================
+	/**
+	 * Concatenation of this list and another
+	 * @param firestations, the other list to concat
+	 * @return Firestations, a new list containing the two others.
+	 */
 	public Firestations concat(Firestations firestations) {
 		List<Firestation> list = new ArrayList<Firestation>();
 		list.addAll(this.getFirestations());
@@ -51,6 +77,12 @@ public class Firestations {
 		return new Firestations(list);
 	}
 	
+	/**
+	 * Search to find if a firestation is inside this list.
+	 * It will do so by comparing the entity by the law of the specifications
+	 * @param firestation
+	 * @return boolean, true if found
+	 */
 	public boolean contain(Firestation firestation) {
 		for(Firestation f : firestations)
 			if(f.compare(firestation))return true;
@@ -58,6 +90,12 @@ public class Firestations {
 		return false;
 	}
 	
+	/**
+	 * Find then replace a firestation by another.
+	 * It will do so by comparing the entity by the law of the specifications
+	 * @param firestation
+	 * @return boolean, true if success
+	 */
 	public boolean replace(Firestation firestation) {
 		for(Firestation p : firestations)
 			if(p.compare(firestation)) {
@@ -66,6 +104,13 @@ public class Firestations {
 			}
 		return false;
 	}
+	
+	/**
+	 * Find then delete a firestation.
+	 * It will do so by comparing the entity by the law of the specifications
+	 * @param firestation
+	 * @return boolean, true if success
+	 */
 	public boolean delete(Firestation firestation) {
 		for(Firestation p : firestations)
 			if(p.compare(firestation)) {
@@ -74,6 +119,13 @@ public class Firestations {
 			}
 		return false;
 	}
+	
+	/**
+	 * Check if the firestation already exist and if not, add it to the list.
+	 * It will do so by comparing the entity by the law of the specifications
+	 * @param firestation
+	 * @return boolean, true if success
+	 */
 	public boolean add(Firestation firestation) {
 		if(!this.contain(firestation)) {
 			firestations.add(firestation);
@@ -93,7 +145,6 @@ public class Firestations {
 			   (o.hashCode() == this.hashCode()));
 		
 	}
-	
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

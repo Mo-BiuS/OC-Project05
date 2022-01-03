@@ -14,6 +14,10 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecords;
 import com.safetyNet.Alerts.Model.Person.Person;
 import com.safetyNet.Alerts.Model.Person.Persons;
 
+/** 
+ * Class containing and handling data
+ * @author Mo-Bius
+ */
 public final class Data {
 	
 	private static final Logger logger = LogManager.getLogger("Data");
@@ -22,6 +26,13 @@ public final class Data {
 	private final Firestations firestations;
 	private final Medicalrecords medicalrecords;
 	
+	//=======================================[Constructor]=======================================
+	/**
+	 * Class constructor.
+	 * @param persons List<Person>
+	 * @param firestations List<Firestation>
+	 * @param medicalrecords List<Medicalrecord>
+	 */
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Data(@JsonProperty("persons") List<Person> persons, 
 					   @JsonProperty("firestations")List<Firestation> firestations, 
@@ -34,19 +45,21 @@ public final class Data {
 		logger.info("Loading new dataset : "+persons.size()+" persons / "+firestations.size()+" firestations / "+medicalrecords.size()+" medicalRecords");
 	}
 
+	//=======================================[getters]=======================================
 	public Persons getPersons() {
 		logger.info("Requesting persons");
-		return persons;
+		return this.persons;
 	}
 	public Firestations getFirestations() {
 		logger.info("Requesting firestations");
-		return firestations;
+		return this.firestations;
 	}
 	public Medicalrecords getMedicalrecords() {
 		logger.info("Requesting medicalrecords");
-		return medicalrecords;
+		return this.medicalrecords;
 	}
-	
+
+	//=======================================[Functions]=======================================
 	@Override
 	public String toString() {
 		return  "{"+this.persons+","+

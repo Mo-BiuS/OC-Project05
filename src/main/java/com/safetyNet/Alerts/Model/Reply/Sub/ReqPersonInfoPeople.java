@@ -7,6 +7,11 @@ import com.safetyNet.Alerts.Model.Person.Person;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+/** 
+ * Sub container to structure an URI
+ * Used in : ReqPersonInfo
+ * @author Mo-Bius
+ */
 @SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
 justification = "Ressources used as output in URI")
 public class ReqPersonInfoPeople {

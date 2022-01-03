@@ -4,6 +4,11 @@ import com.safetyNet.Alerts.Model.Medicalrecord.Medicalrecord;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+/** 
+ * Sub container to structure an URI
+ * Used in : ReqChildAlert
+ * @author Mo-Bius
+ */
 @SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
 justification = "Ressources used as output in URI")
 public class ReqChildAlertAdult {

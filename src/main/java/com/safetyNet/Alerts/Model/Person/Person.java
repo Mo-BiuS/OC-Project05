@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/** 
+ * Represents a person from the data model.
+ * @author Mo-Bius
+ */
 public class Person {
 
 	private  String firstName;
@@ -15,7 +19,17 @@ public class Person {
 	private  String email;
 	private  int zip;
 	
-
+	//=======================================[Constructor]=======================================
+	/**
+	 * Class constructor.
+	 * @param firstName String
+	 * @param lastName String	
+	 * @param address String
+	 * @param city String
+	 * @param zip int
+	 * @param phone String	
+	 * @param email String
+	 */
 	@Autowired
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Person(@JsonProperty("firstName") String firstName, 
@@ -34,6 +48,7 @@ public class Person {
 		this.email = email;
 	}
 	
+	//=======================================[getters/setters]=======================================
 	public String getFirstName() {
 		return firstName;
 	}
@@ -78,6 +93,16 @@ public class Person {
 		zip=z;
 	}
 	
+	//=======================================[Functions]=======================================
+	/**
+	 * Compare this entity with another of the same class to see if they are the same in the eye of the specifications
+	 * @param person 
+	 * @return boolean
+	 */
+	public boolean compare(Person person) {
+		return this.getFirstName().equals(person.getFirstName()) &&
+				this.getLastName().equals(person.getLastName());
+	}
 	@Override
 	public int hashCode() {
 		int value = 1;
@@ -111,11 +136,6 @@ public class Person {
 			   (o instanceof Person) &&
 			   (o.hashCode() == this.hashCode()));
 		
-	}
-	
-	public boolean compare(Person person) {
-		return this.getFirstName().equals(person.getFirstName()) &&
-				this.getLastName().equals(person.getLastName());
 	}
 	@Override
 	public String toString() {

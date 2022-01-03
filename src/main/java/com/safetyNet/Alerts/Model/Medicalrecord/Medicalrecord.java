@@ -6,6 +6,10 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/** 
+ * Represents a medical record from the data model.
+ * @author Mo-Bius
+ */
 public class Medicalrecord {
 	private  String firstName;
 	private  String lastName;
@@ -13,6 +17,15 @@ public class Medicalrecord {
 	private  ArrayList<String> medications;
 	private  ArrayList<String> allergies;
 	
+	//=======================================[Constructor]=======================================
+	/**
+	 * Class constructor.
+	 * @param firstName String
+	 * @param lastName String	
+	 * @param birthdate Date
+	 * @param medications ArrayList<String> 
+	 * @param allergies ArrayList<String> 
+	 */
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public Medicalrecord(@JsonProperty("firstName") String firstName, 
 						 @JsonProperty("lastName") String lastName, 
@@ -28,6 +41,7 @@ public class Medicalrecord {
 		else this.birthdate = (Date) birthdate.clone();
 	}
 
+	//=======================================[getters/setters]=======================================
 	public String getFirstName() {
 		return firstName;
 	}
@@ -43,9 +57,6 @@ public class Medicalrecord {
 	}
 	public ArrayList<String> getAllergies() {
 		return allergies;
-	}
-	public long getAge() {
-		return (long) (((System.currentTimeMillis()-this.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
 	}
 	
 	public void setFirstName(String f) {
@@ -63,7 +74,25 @@ public class Medicalrecord {
 	public void setAllergies(ArrayList<String> a) {
 		allergies = a;
 	}
+
+	//=======================================[Functions]=======================================
+	/**
+	 * Will return the actual age in year by comparing the birthdate and the computer date.
+	 * @return int
+	 */
+	public int getAge() {
+		return (int) (((System.currentTimeMillis()-this.getBirthdate().getTime()))/(365.25 * 24 * 60 * 60 * 1000));
+	}
 	
+	/**
+	 * Compare this entity with another of the same class to see if they are the same in the eye of the specifications
+	 * @param medicalRecord 
+	 * @return boolean
+	 */
+	public boolean compare(Medicalrecord medicalRecord) {
+		return this.getFirstName().equals(medicalRecord.getFirstName()) &&
+				this.getLastName().equals(medicalRecord.getLastName());
+	}
 	@Override
 	public int hashCode() {
 		
@@ -92,11 +121,6 @@ public class Medicalrecord {
 			   (o instanceof Medicalrecord) &&
 			   (o.hashCode() == this.hashCode()));
 		
-	}
-	
-	public boolean compare(Medicalrecord medicalRecord) {
-		return this.getFirstName().equals(medicalRecord.getFirstName()) &&
-				this.getLastName().equals(medicalRecord.getLastName());
 	}
 	@Override
 	public String toString() {

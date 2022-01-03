@@ -11,12 +11,20 @@ import com.safetyNet.Alerts.Model.Reply.Sub.ReqPersonInfoPeople;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+/** 
+ * Structured answer to the /personInfo uri
+ * @author Mo-Bius
+ */
 @SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
 justification = "Ressources used as output in URI")
 public class ReqPersonInfo {
-
 	public final List<ReqPersonInfoPeople> peoples;
 	
+	/**
+	 * The data send should be the concerned data, the sorting of said data is handled by the constructor
+	 * @param concernedPeople
+	 * @param records
+	 */
 	public ReqPersonInfo(Persons concernedPeople, Medicalrecords records) {
 		peoples = new ArrayList<ReqPersonInfoPeople>();
 		for(int i = 0; i < records.getMedicalrecords().size(); i++) {
