@@ -297,6 +297,8 @@ public class RequestServiceTest {
 		assertTrue(req.peoples.size() == 1);
 		assertTrue(req.peoples.get(0).firstName.equals(firstNameA));
 		assertTrue(req.peoples.get(0).lastName.equals(lastNameA));
+		assertTrue(req.peoples.get(0).mail.equals(emailA));
+		assertTrue(req.peoples.get(0).address.equals(adressAB));
 	}
 	
 	@Test

@@ -18,6 +18,7 @@ public class ReqPersonInfoPeople {
 	public final String firstName;
 	public final String lastName;
 	public final String address;
+	public final String mail;
 	public final long age;
 	public final ArrayList<String> medications;
 	public final ArrayList<String> allergies;
@@ -26,6 +27,7 @@ public class ReqPersonInfoPeople {
 		firstName = p.getFirstName();
 		lastName = p.getLastName();
 		address = p.getAddress();
+		mail = p.getEmail();
 		age = mr.getAge();
 		medications = mr.getMedications();
 		allergies = mr.getAllergies();

@@ -192,7 +192,9 @@ public class AppControllerTest {
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(content().string(containsString(firstNameA)))
-					.andExpect(content().string(containsString(lastNameA)));
+					.andExpect(content().string(containsString(lastNameA)))
+					.andExpect(content().string(containsString(adressAB)))
+					.andExpect(content().string(containsString(emailA)));
 	}
 	
 	@Test
